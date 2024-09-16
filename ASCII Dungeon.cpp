@@ -2,21 +2,49 @@
 //
 
 #include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
 
-std::string map[16][16];
+const int size = 16;
+std::string chunk[size][size];
+
+void ImportChunk(std::string path)
+{
+	std::vector<std::string> outputs;
+	std::ifstream importFile(path);
+	//temp buffer
+	std::string currentLine;
+
+	while (std::getline(importFile, currentLine))
+	{
+		outputs.push_back(currentLine);
+	}
+
+	for (size_t i = 0; i < size; i++)
+	{
+		currentLine = outputs[i];
+		for (size_t j = 0; j < size; j++)
+		{
+			chunk[i][j] = currentLine[j];
+		}
+	}
+}
+
+void RenderChunk()
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		for (size_t j = 0; j < size; j++)
+		{
+			std::cout << chunk[i][j];
+		}
+		std::cout << std::endl;
+	}
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	ImportChunk("Chunks/chunk-full.txt");
+	RenderChunk();
 }
-
-// Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
-// Déboguer le programme : F5 ou menu Déboguer > Démarrer le débogage
-
-// Astuces pour bien démarrer : 
-//   1. Utilisez la fenêtre Explorateur de solutions pour ajouter des fichiers et les gérer.
-//   2. Utilisez la fenêtre Team Explorer pour vous connecter au contrôle de code source.
-//   3. Utilisez la fenêtre Sortie pour voir la sortie de la génération et d'autres messages.
-//   4. Utilisez la fenêtre Liste d'erreurs pour voir les erreurs.
-//   5. Accédez à Projet > Ajouter un nouvel élément pour créer des fichiers de code, ou à Projet > Ajouter un élément existant pour ajouter des fichiers de code existants au projet.
-//   6. Pour rouvrir ce projet plus tard, accédez à Fichier > Ouvrir > Projet et sélectionnez le fichier .sln.
