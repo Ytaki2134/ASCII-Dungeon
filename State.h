@@ -1,4 +1,5 @@
 #pragma once
+#include "StateManager.h"
 class State
 {
 private:
@@ -8,9 +9,9 @@ private:
 
 public:
 
-	void OnEnter();
-	void OnUpdate();
-	void OnExit();
+	virtual void OnEnter(StateManager* state, Mobs* monster);
+	virtual void OnUpdate(StateManager* state, Mobs* monster);
+	virtual void OnExit(StateManager* state, Mobs* monster);
 
 };
 
