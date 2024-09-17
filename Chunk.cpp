@@ -42,3 +42,8 @@ void Chunk::SetChunk(int x, int y, char content)
 {
 	chunk[x][y] = content;
 }
+
+void Chunk::SetChunk(int x, int y , std::string content)
+{
+	chunk[x][y] = content;
+}

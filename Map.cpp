@@ -23,14 +23,17 @@ void Map::ImportMap(std::string path)
 	for (size_t i = 0; i < chunkCount; i++)
 	{
 		Chunk tempChunk;
+		//Step - 0,17,34 ...
+		int step = (ARRAY_SIZE + 1) * i;
+
 		//X axis - 0 to 16
 		for (size_t j = 0; j < ARRAY_SIZE; j++)
 		{
-			//Y axis - 0 to 16 then 18 to 33 ...
-			for (size_t k = (ARRAY_SIZE + 2) * i; k < ARRAY_SIZE * (i+1) + 1*i; k++)
+			currentLine = outputs[j + step];
+			//Y axis - 0 to 16
+			for (size_t k = 0; k < ARRAY_SIZE; k++)
 			{
-				currentLine = outputs[k];
-				tempChunk.SetChunk(j, k%16, currentLine[k%16]);
+				tempChunk.SetChunk(j, k, currentLine[k]);
 			}
 		}
 		m_ChunkVector.push_back(tempChunk);

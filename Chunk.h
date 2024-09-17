@@ -16,6 +16,7 @@ public:
 	void RenderChunk();
 
 	void SetChunk(int, int, char);
+	void SetChunk(int, int, std::string);
 private:
 	std::string chunk[ARRAY_SIZE][ARRAY_SIZE];
 };
