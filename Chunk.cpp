@@ -21,7 +21,7 @@ void Chunk::ImportChunk(std::string path)
 		currentLine = outputs[i];
 		for (size_t j = 0; j < ARRAY_SIZE; j++)
 		{
-			Chunk::chunk[i][j] = currentLine[j];
+			Chunk::m_chunk[i][j] = currentLine[j];
 		}
 	}
 }
@@ -32,18 +32,18 @@ void Chunk::RenderChunk()
 	{
 		for (size_t j = 0; j < ARRAY_SIZE; j++)
 		{
-			std::cout << Chunk::chunk[i][j];
+			std::cout << Chunk::m_chunk[i][j];
 		}
 		std::cout << std::endl;
 	}
 }
 
-void Chunk::SetChunk(int x, int y, char content)
+void Chunk::SetChunkCoords(int x, int y, char content)
 {
-	chunk[x][y] = content;
+	m_chunk[x][y] = content;
 }
 
-void Chunk::SetChunk(int x, int y , std::string content)
+void Chunk::SetChunkCoords(int x, int y , std::string content)
 {
-	chunk[x][y] = content;
+	m_chunk[x][y] = content;
 }
