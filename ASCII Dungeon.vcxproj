@@ -130,7 +130,6 @@
     <ClCompile Include="ASCII Dungeon.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Chunk.cpp" />
     <ClCompile Include="Global.cpp" />
     <ClCompile Include="Map.cpp" />

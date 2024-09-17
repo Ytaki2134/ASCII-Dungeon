@@ -10,8 +10,12 @@
 
 int main()
 {
+	Chunk FirstChunk;
 	Map FirstMap;
 
+	/*FirstChunk.ImportChunk("Chunks/chunk-empty.txt");
+	FirstChunk.RenderChunk();*/
+
 	FirstMap.ImportMap("Chunks/map-empty.txt");
-	FirstMap.GetMap()[2].RenderChunk();
+	FirstMap.GetMap()[0].RenderChunk();
 }
