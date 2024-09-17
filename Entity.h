@@ -10,7 +10,7 @@ private:
 	bool frezze = 0;
 	int posx;
 	int posy;
-
+	//Map* map;
 
 public: 
 	

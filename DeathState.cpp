@@ -6,13 +6,13 @@ void DeathState::OnEnter(StateManager* state, Mobs* monster)
 	OnUpdate(state,monster);
 }
 
-void DeathState::OnUpdate(StateManager* state, Mobs* monster)
+void DeathState::OnUpdate(StateManager* state, Mobs* monster) 
 {
 	//donner les recompenses
 	OnExit(state, monster);
 }
 
-void DeathState::OnExit(StateManager* state, Mobs* monster)
+void DeathState::OnExit(StateManager* state, Mobs* monster) 
 {
 	//clear l'ennemie
 }

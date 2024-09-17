@@ -128,10 +128,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ASCII Dungeon.cpp" />
-    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="CombatState.cpp" />
+    <ClCompile Include="DeathState.cpp" />
+    <ClCompile Include="Golem.cpp" />
+    <ClCompile Include="IdleState.cpp" />
+    <ClCompile Include="Mobs.cpp" />
+    <ClCompile Include="NearPlayerState.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CombatState.h" />
+    <ClInclude Include="DeathState.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="Golem.h" />
+    <ClInclude Include="IdleState.h" />
+    <ClInclude Include="Mobs.h" />
+    <ClInclude Include="NearPlayerState.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StateManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

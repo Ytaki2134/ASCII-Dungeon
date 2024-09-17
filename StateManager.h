@@ -17,8 +17,8 @@ private:
 	CombatState Combat;
 	DeathState Death;
 public:
-
-	void EnterState();
+	
+	void EnterState() {	GetCurrentState().OnEnter(this, monster);}
 	void ChangeState(State newstate) { currentState = newstate; }
 
 	State GetCurrentState()					{ return currentState; }
