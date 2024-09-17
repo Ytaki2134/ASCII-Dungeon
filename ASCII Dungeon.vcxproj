@@ -130,14 +130,17 @@
     <ClCompile Include="ASCII Dungeon.cpp" />
     <ClCompile Include="Chunk.cpp" />
     <ClCompile Include="Global.cpp" />
+    <ClCompile Include="Map.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Chunks\chunk-empty.txt" />
     <Text Include="Chunks\chunk-full.txt" />
+    <Text Include="Chunks\map-empty.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Chunk.h" />
     <ClInclude Include="Global.h" />
+    <ClInclude Include="Map.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -14,6 +14,8 @@ public:
 
 	void ImportChunk(std::string);
 	void RenderChunk();
+
+	void SetChunk(int, int, char);
 private:
 	std::string chunk[ARRAY_SIZE][ARRAY_SIZE];
 };

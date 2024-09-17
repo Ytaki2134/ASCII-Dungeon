@@ -37,3 +37,8 @@ void Chunk::RenderChunk()
 		std::cout << std::endl;
 	}
 }
+
+void Chunk::SetChunk(int x, int y, char content)
+{
+	chunk[x][y] = content;
+}
