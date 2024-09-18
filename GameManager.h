@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <random>
 #include <string_view>
-#include "GameRenderer.h"
 #include "map.h"
 #include "Entity.h"
 #include "Player.h"
@@ -20,7 +19,7 @@ public:
 	void DeleteEntity(int id);
 private:
 	void SetMap(Map);
-	GameRenderer m_gameRenderer;
+	class GameRenderer* m_gameRenderer;
 	Map m_map;
 	std::vector<Entity> m_entityVector;
 	Player m_player;

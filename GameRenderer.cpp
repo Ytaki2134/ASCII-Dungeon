@@ -1,7 +1,17 @@
 #include "GameRenderer.h"
+#include <cassert>
+
+GameRenderer* GameRenderer::get()
+{
+	if (!instance)
+		instance = new GameRenderer;
+	return instance;
+}
 
 GameRenderer::GameRenderer()
 {
+	assert(instance == nullptr);
+	instance = this;
 	ImportTitle("Ressources/Title.txt");
 }
 

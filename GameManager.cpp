@@ -1,7 +1,7 @@
 #include "GameManager.h"
 #include "Player.h"
 #include "Golem.h"
-
+#include "GameRenderer.h"
 
 void GameManager::CheckInputs()
 {
@@ -15,7 +15,7 @@ void GameManager::CheckInputs()
 		std::get<0>(tempTuple) -= 1;
 		m_player.SetPosition(tempTuple);
 		m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), "@");
-		m_gameRenderer.RenderScreen(m_map);
+		m_gameRenderer->RenderScreen(m_map);
 		while (GetKeyState(VK_UP) & 0x8000);
 	}
 	if (GetKeyState(VK_DOWN) & 0x8000)
@@ -28,7 +28,7 @@ void GameManager::CheckInputs()
 		std::get<0>(tempTuple) += 1;
 		m_player.SetPosition(tempTuple);
 		m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), "@");
-		m_gameRenderer.RenderScreen(m_map);
+		m_gameRenderer->RenderScreen(m_map);
 		while (GetKeyState(VK_DOWN) & 0x8000);
 	}
 	if (GetKeyState(VK_LEFT) & 0x8000)
@@ -41,7 +41,7 @@ void GameManager::CheckInputs()
 		std::get<1>(tempTuple) -= 1;
 		m_player.SetPosition(tempTuple);
 		m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), "@");
-		m_gameRenderer.RenderScreen(m_map);
+		m_gameRenderer->RenderScreen(m_map);
 		while (GetKeyState(VK_LEFT) & 0x8000);
 	}
 	if (GetKeyState(VK_RIGHT) & 0x8000)
@@ -54,7 +54,7 @@ void GameManager::CheckInputs()
 		std::get<1>(tempTuple) += 1;
 		m_player.SetPosition(tempTuple);
 		m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), "@");
-		m_gameRenderer.RenderScreen(m_map);
+		m_gameRenderer->RenderScreen(m_map);
 		while (GetKeyState(VK_RIGHT) & 0x8000);
 	}
 }
@@ -107,7 +107,8 @@ void GameManager::InitGame(std::string path)
 	ScanEntities();
 
 	//Render Visuals
-	m_gameRenderer.RenderScreen(m_map);
+	//m_gameRenderer.RenderScreen(m_map);
+	GameRenderer::get()->RenderScreen(m_map);
 }
 
 Map GameManager::GetMap()
