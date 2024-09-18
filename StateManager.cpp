@@ -3,7 +3,6 @@
 #include "StateManager.h"
 
 
-
 State* StateManager::GetCurrentState() const
 {
     return currentState;

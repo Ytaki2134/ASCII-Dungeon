@@ -1,12 +1,18 @@
 #include "IdleState.h"
 #include "StateManager.h"
 #include "Mobs.h"
+
+
+#include"NearPlayerState.h"
+#include"DeathState.h"
+
+
 void IdleState::Enter(StateManager* stateManager)
 {
 	if (stateManager->GetMobs()->ControlDistance())
-		stateManager->ChangeState(stateManager->GetNearPlayerState());
+		stateManager->ChangeState(dynamic_cast<State*>(stateManager->GetNearPlayerState()));
 	if (stateManager->GetMobs()->getLife() == 0)
-		stateManager->ChangeState(stateManager->GetDeathState());
+		stateManager->ChangeState(dynamic_cast<State*>(stateManager->GetDeathState()));
 	else
 		Update(stateManager);
 }

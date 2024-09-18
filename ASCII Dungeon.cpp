@@ -7,14 +7,7 @@ std::string map[16][16];
 
 int main()
 {
-    srand(time(NULL));
-    int direction = 1;
-    while (direction!=0)
-    {
-        int direction = (rand() % 3) + 1;
-        std::cout << direction;
 
-    }
 }
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage

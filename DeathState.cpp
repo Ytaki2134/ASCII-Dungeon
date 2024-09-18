@@ -1,5 +1,7 @@
 #include "DeathState.h"
-#include "StateManager.cpp"
+
+#include "StateManager.h"
+#include "Mobs.h"
 void DeathState::Enter(StateManager* stateManager)
 {
 	// animation ou autres

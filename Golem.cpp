@@ -5,17 +5,23 @@
 void Golem::Move()
 {
 	srand(time(NULL));
-	int direction = (rand() % 3) + 1;
+	int direction = (rand() % 4) + 1;
+
 	switch (direction)
 	{
 	case 0:
+		//up
 		break;
 	case 1:
+		//down
 		break;
 	case 2:
+		//left
 		break;
 	case 3:
+		//right
 		break;
+		
 	default:
 		break;
 	}

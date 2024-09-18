@@ -1,29 +1,31 @@
 #include "NearPlayerState.h"
-#include "StateManager.cpp"
+#include "StateManager.h"
+#include "Mobs.h"
+
+#include "IdleState.h"
+#include "DeathState.h"
+
 void NearPlayerState::Enter(StateManager* stateManager)
 {
 	
-	//if (!GetMobs()->ControlDistance())
-	//	GetStateManager()->ChangeState(GetStateManager()->GetIdle());
-	//if (GetMobs()->getLife() == 0)
-	//	GetStateManager()->ChangeState(GetStateManager()->GetDeathState());
-	//else
+	if (!stateManager->GetMobs()->ControlDistance())
+		stateManager->ChangeState(dynamic_cast<State*>(stateManager->GetIdle()));
+	if (stateManager->GetMobs()->getLife() == 0)
+		stateManager->ChangeState(dynamic_cast<State*>(stateManager->GetDeathState()));
+	else
 		Update(stateManager);
 }
 
 void NearPlayerState::Update(StateManager* stateManager)
 {
-	//GetMobs()->Chase();
+	stateManager->GetMobs()->Chase();
 	Exit(stateManager);
 }
 
 void NearPlayerState::Exit(StateManager* stateManager)
 {
-	//if (GetMobs()->ReadyToAttack()) {
-	//	GetStateManager()->ChangeState(GetStateManager()->GetCombatState());
-
-	//	GetStateManager()->GetCurrentState().SetStateManager(GetStateManager());
-
-	//	GetStateManager()->GetCurrentState().Enter();
-	//}
+	if (stateManager-> GetMobs()->ReadyToAttack()) {
+		stateManager->ChangeState(dynamic_cast<State*>(stateManager->GetCombatState()));
+		stateManager->GetCurrentState()->Enter(stateManager);
+	}
 }
