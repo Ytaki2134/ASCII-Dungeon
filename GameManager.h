@@ -3,20 +3,23 @@
 #include "map.h"
 #include "Entity.h"
 #include "GameRenderer.h"
+#include "Entity.h"
+#include "Player.h"
 
 class GameManager
 {
 
 public:
 	void CheckInputs();
+	void ScanEntities();
 	void InitGame(std::string);
 	Map GetMap();
-	std::vector<Entity> listMobs;
 	void Try();
 
 private:
 	void SetMap(Map);
 	GameRenderer m_gameRenderer;
 	Map m_map;
+	std::vector<Entity> m_entityVector;
 };
 

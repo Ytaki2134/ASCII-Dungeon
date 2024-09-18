@@ -1,5 +1,4 @@
 #pragma once
-#include "Global.h"
 
 #include <iostream>
 #include <fstream>
@@ -10,14 +9,14 @@
 class Chunk
 {
 public:
-#define ARRAY_SIZE 16
+#define ARRAY_SIZE 15
 	Chunk();
 
 	void ImportChunk(std::string);
 
 	void SetChunkCoords(int, int, char);
 	void SetChunkCoords(int, int, std::string);
-	std::vector<std::string> getChunk();
+	std::vector<std::string> getChunk(bool);
 private:
 	std::string m_chunk[ARRAY_SIZE][ARRAY_SIZE];
 };

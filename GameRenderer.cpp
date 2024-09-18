@@ -29,7 +29,7 @@ void GameRenderer::RenderScreen(Map map)
 {
 	std::system("cls");
 	RenderTitle();
-	RenderChunk(map.GetCurrentChunk().getChunk());
+	RenderChunk(map.GetCurrentChunk().getChunk(true));
 }
 
 void GameRenderer::RenderTitle()
