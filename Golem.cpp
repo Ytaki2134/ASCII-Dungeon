@@ -58,5 +58,5 @@ void Golem::Attack()
 
 void Golem::Death()
 {
-	gameManager->DeadEntity(GetID());
+	gameManager->DeleteEntity(GetID());
 }

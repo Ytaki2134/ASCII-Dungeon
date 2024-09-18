@@ -7,26 +7,54 @@ void GameManager::CheckInputs()
 {
 	if (GetKeyState(VK_UP) & 0x8000)
 	{
-		m_map.setCurrentChunkId(m_map.GetCurrentChunkId() + 1);
+		std::tuple<int, int> tempTuple = m_player.GetPosition();
+		if (std::get<0>(tempTuple) <= 0)
+			return;
+
+		m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), ".");
+		std::get<0>(tempTuple) -= 1;
+		m_player.SetPosition(tempTuple);
+		m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), "@");
 		m_gameRenderer.RenderScreen(m_map);
 		while (GetKeyState(VK_UP) & 0x8000);
 	}
 	if (GetKeyState(VK_DOWN) & 0x8000)
 	{
-		m_map.setCurrentChunkId(m_map.GetCurrentChunkId() - 1);
+		std::tuple<int, int> tempTuple = m_player.GetPosition();
+		if (std::get<0>(tempTuple) >= ARRAY_SIZE-1)
+			return;
+
+		m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), ".");
+		std::get<0>(tempTuple) += 1;
+		m_player.SetPosition(tempTuple);
+		m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), "@");
 		m_gameRenderer.RenderScreen(m_map);
 		while (GetKeyState(VK_DOWN) & 0x8000);
 	}
 	if (GetKeyState(VK_LEFT) & 0x8000)
 	{
-		std::cout << "UP" << std::endl;
-		//Do something
+		std::tuple<int, int> tempTuple = m_player.GetPosition();
+		if (std::get<1>(tempTuple) <= 0)
+			return;
+
+		m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), ".");
+		std::get<1>(tempTuple) -= 1;
+		m_player.SetPosition(tempTuple);
+		m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), "@");
+		m_gameRenderer.RenderScreen(m_map);
 		while (GetKeyState(VK_LEFT) & 0x8000);
 	}
 	if (GetKeyState(VK_RIGHT) & 0x8000)
 	{
-		std::cout << "UP" << std::endl;
-		//Do something
+		std::tuple<int, int> tempTuple = m_player.GetPosition();
+		if (std::get<1>(tempTuple) >= ARRAY_SIZE-1)
+			return;
+
+		m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), ".");
+		std::get<1>(tempTuple) += 1;
+		m_player.SetPosition(tempTuple);
+		m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), "@");
+		m_gameRenderer.RenderScreen(m_map);
 		while (GetKeyState(VK_RIGHT) & 0x8000);
 	}
 }
@@ -43,6 +71,7 @@ void GameManager::ScanEntities()
 		for (int j = 0; j < tempString.size(); j++)
 		{
 			tempTuple = { i, j };
+			//if(tempString[j])
 			switch (tempString[j])
 			{
 			case 46:
@@ -54,17 +83,18 @@ void GameManager::ScanEntities()
 			{
 				Player _player;
 				_player.SetPosition(tempTuple);
-				m_entityVector.push_back(_player);
+				m_player = _player;
 				break;
 			}
 			default:
+			{
 				break;
+			}
 			}
 		}
 	}
 
 	//Sort to have player as first item
-
 }
 
 void GameManager::InitGame(std::string path)
@@ -85,24 +115,12 @@ Map GameManager::GetMap()
 	return m_map;
 }
 
-void GameManager::Try()
-{
-	Player a;
-	Golem b;
-
-	a.SetPosition(std::tuple<int, int>(10, 10));
-	b.SetPlayer(&a);
-	b.SetPosition(std::tuple<int, int>(10, 7));
-	b.Chase();
-
-}
-
 Entity GameManager::GetEntity(int id)
 {
 	return m_entityVector[id];
 }
 
-void GameManager::DeadEntity(int id)
+void GameManager::DeleteEntity(int id)
 {
 	m_entityVector.erase(m_entityVector.begin() + id);
 }
