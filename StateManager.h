@@ -1,5 +1,4 @@
 #pragma once
-#include <variant>
 #include "NearPlayerState.h"
 #include "CombatState.h"
 #include "Deathstate.h"
