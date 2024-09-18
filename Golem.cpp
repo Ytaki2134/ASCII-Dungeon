@@ -1,6 +1,6 @@
 #include "Golem.h"
 #include "GameManager.h"
-
+#include "Player.h"
 #include <random>
 
 
@@ -32,13 +32,22 @@ void Golem::Move()
 
 void Golem::Chase()
 {
-	
-	//intialize un premier path 
-	//while 
-	gameManager->GetMap().GetCurrentChunk();
-	GetDistance();
-	
-
+	std::tuple<int, int> actualpos = GetPosition();
+	std::tuple<int, int> betterpos = std::tuple<int, int>(std::get<0>(actualpos) + 1, std::get<1>(actualpos));
+	int bestdist = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos)+1, std::get<1>(actualpos)));
+	if (int a = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos) - 1, std::get<1>(actualpos))) < bestdist) {
+		bestdist = a;
+		betterpos = std::tuple<int, int>(std::get<0>(actualpos) - 1, std::get<1>(actualpos));
+	}
+	else if (int a = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos)+1)) < bestdist) {
+		bestdist = a;
+		betterpos = std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos)+1);
+	}
+	else if (int a = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos)-1)) < bestdist) {
+		bestdist = a;
+		betterpos = std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos)-1);
+	}
+	std::find(gameManager->listMobs.begin(), gameManager->listMobs.end(), dynamic_cast<Entity*>(this))[0]->SetPosition(betterpos);
 }
 
 void Golem::Attack()

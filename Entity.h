@@ -8,9 +8,7 @@ protected:
 	int energy;
 	bool burn	= 0;
 	bool frezze = 0;
-	int posx;
-	int posy;
-	//Map* map;
+	std::tuple<int,int> position;
 
 public: 
 	
@@ -26,5 +24,6 @@ public:
 	virtual void setEnergy(int newenergy) { energy = newenergy; };
 	virtual void setburn(bool _burn) { burn = _burn; };
 	virtual void setFreeze(bool _frezze) { frezze = -_frezze; };
-	virtual std::tuple<int, int> GetPosition() { return std::tuple<int, int>(posx, posy); };
+	virtual std::tuple<int,int> GetPosition() { return position; };
+	virtual void SetPosition(std::tuple<int, int> pos) { position = pos; };
 };

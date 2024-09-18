@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "Entity.h"
-#include "Player.h"
 class StateManager;
+class Player;
 
 class Mobs : public Entity{
 
@@ -28,9 +28,9 @@ public:
 
 	bool ControlDistance();
 	bool ReadyToAttack() { return	(GetDistance() == 1) ? 1 : false; };
-	int GetDistance() { return  (std::get<0>(GetPosition()) - std::get<0>(player->GetPosition())) + (std::get<1>(GetPosition()) - std::get<1>(player->GetPosition())); };// ( x B − x A ) + ( y B − y A )
-	Player* GetPlayer() { return player; };
-
+	int GetDistance();
+	int CalculDistance(std::tuple<int, int> pos);
+	Player* GetPlayer() ;
 
 	//virtual RecompenseOnDeath getRecompenseOnDeat(){return dethmob;}
 	//virtual StateMachine getStateMachine(){return ia;}
