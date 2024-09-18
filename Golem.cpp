@@ -34,21 +34,25 @@ void Golem::Chase()
 {
 	std::tuple<int, int> actualpos = GetPosition();
 	std::tuple<int, int> betterpos = std::tuple<int, int>(std::get<0>(actualpos) + 1, std::get<1>(actualpos));
-	int bestdist = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos) + 1, std::get<1>(actualpos)));
+	int bestdist = CalculDistance(betterpos);
 	if (int a = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos) - 1, std::get<1>(actualpos))) < bestdist) {
+		std::cout << "1 dist" << a << std::endl;
 		bestdist = a;
 		betterpos = std::tuple<int, int>(std::get<0>(actualpos) - 1, std::get<1>(actualpos));
 	}
-	else if (int a = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) + 1)) < bestdist) {
+	if (int a = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) + 1)) < bestdist) {
+		std::cout << "2 dist" << a<<std::endl;
 		bestdist = a;
 		betterpos = std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) + 1);
 	}
-	else if (int a = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) - 1)) < bestdist) {
+	if (int a = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) - 1)) < bestdist) {
+		std::cout << "3 dist" << a << std::endl << "pleaye: " << std::get<0>(GetPlayer()->GetPosition()) << " , " << std::get<0>(GetPlayer()->GetPosition());
 		bestdist = a;
 		betterpos = std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) - 1);
 	}
-	//std::find(gameManager->listMobs.begin(), gameManager->listMobs.end(), dynamic_cast<Entity*>(this))[0]->SetPosition(betterpos);
+	
 	std::cout<<"position:" << std::get<0>(betterpos) << " , " << std::get<1>(betterpos) << std::endl;
+	gameManager->GetEntity(Id).SetPosition(betterpos);
 }
 
 void Golem::Attack()

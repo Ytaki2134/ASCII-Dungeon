@@ -90,9 +90,9 @@ void GameManager::Try()
 	Player a;
 	Golem b;
 
-	a.SetPosition(std::tuple<int, int>(10, 10));
+	a.SetPosition(std::tuple<int, int>(8,4));
 	b.SetPlayer(&a);
-	b.SetPosition(std::tuple<int, int>(10, 7));
+	b.SetPosition(std::tuple<int, int>(8, 10));
 	b.Chase();
 
 }

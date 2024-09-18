@@ -17,7 +17,16 @@ int Mobs::GetDistance()
 
 int Mobs::CalculDistance(std::tuple<int, int> pos)
 {
-	return  (std::get<0>(pos) - std::get<0>(player->GetPosition())) + (std::get<1>(pos) - std::get<1>(player->GetPosition()));
+	int distance_x = std::get<0>(player->GetPosition()) - std::get<0>(pos);
+	if (distance_x < 0)
+		distance_x *= -1;
+	
+	int distance_y = std::get<1>(player->GetPosition()) - std::get<1>(pos);
+	if (distance_y < 0)
+		distance_y *= -1;
+	int distance = distance_x+distance_y;
+	std::cout << "dist : " << distance << std::endl;
+	return distance;
 }
 
 Player* Mobs::GetPlayer()
