@@ -1,4 +1,6 @@
 #include "Golem.h"
+#include "GameManager.h"
+
 #include <random>
 
 
@@ -31,8 +33,11 @@ void Golem::Move()
 void Golem::Chase()
 {
 	
-	//if(std::get<0>(GetPlayer()->GetPosition()))
-	//	GetPosition();
+	//intialize un premier path 
+	//while 
+	gameManager->GetMap().GetCurrentChunk();
+	GetDistance();
+	
 
 }
 

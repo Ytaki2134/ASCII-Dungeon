@@ -1,12 +1,12 @@
 #pragma once
 #include "Mobs.h"
-
+class GameManager;
 class Golem : public Mobs
 {
-private:
+private: 
 
 	
-
+	GameManager* gameManager;
 
 
 public :
