@@ -8,7 +8,7 @@ void Golem::Move()
 {
 	srand(time(NULL));
 	int direction = (rand() % 4) + 1;
-	auto mob = std::find(gameManager->listMobs.begin(), gameManager->listMobs.end(), dynamic_cast<Entity*>(this))[0];
+	auto mob = gameManager->GetEntity(GetID());
 
 	switch (direction)
 	{
@@ -58,5 +58,5 @@ void Golem::Attack()
 
 void Golem::Death()
 {
-	gameManager->listMobs.erase(std::find(gameManager->listMobs.begin(), gameManager->listMobs.end(), dynamic_cast<Entity*>(this)));
+	gameManager->DeadEntity(GetID());
 }

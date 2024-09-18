@@ -15,7 +15,8 @@ public:
 	void InitGame(std::string);
 	Map GetMap();
 	void Try();
-
+	Entity GetEntity(int Id);
+	void DeadEntity(int id);
 private:
 	void SetMap(Map);
 	GameRenderer m_gameRenderer;

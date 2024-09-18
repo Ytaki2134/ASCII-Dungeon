@@ -97,6 +97,16 @@ void GameManager::Try()
 
 }
 
+Entity GameManager::GetEntity(int Id)
+{
+	return std::find(m_entityVector.begin(), m_entityVector.end(), Id)[0];
+}
+
+void GameManager::DeadEntity(int id)
+{
+	std::remove(m_entityVector.begin(), m_entityVector.end() , id);
+}
+
 void GameManager::SetMap(Map map)
 {
 	m_map = map;

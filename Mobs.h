@@ -9,6 +9,7 @@ private:
 
 	Player* player;
 	int detection = 6;
+	int Id;
 
 	StateManager* stateManager ;
 	// RecompenseOnDeath deathmob;
@@ -21,6 +22,7 @@ public:
 	//virtual void SetStateMachine( StateMachine _ia) {ia = _ia;}
 	//virtual void SetUniqueSkill ( Skill skill) {uniqueskill = skill;}
 
+
 	virtual void Move()  {};
 	virtual void Chase() {};
 	virtual void Attack(){};
@@ -32,6 +34,10 @@ public:
 	int CalculDistance(std::tuple<int, int> pos);
 	Player* GetPlayer() ;
 	void SetPlayer(Player* pl);
+
+	int GetID() { return Id; };
+	void SetId(int newId) { Id = newId; };
+
 
 	//virtual RecompenseOnDeath getRecompenseOnDeat(){return dethmob;}
 	//virtual StateMachine getStateMachine(){return ia;}
