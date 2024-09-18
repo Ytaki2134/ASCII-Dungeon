@@ -30,15 +30,24 @@
     <ClCompile Include="Map.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="GameRenderer.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Chunks\chunk-empty.txt">
+    <Text Include="Ressources\title.txt">
       <Filter>Fichiers de ressources</Filter>
     </Text>
-    <Text Include="Chunks\chunk-full.txt">
+    <Text Include="Ressources\chunk-empty.txt">
       <Filter>Fichiers de ressources</Filter>
     </Text>
-    <Text Include="Chunks\map-empty.txt">
+    <Text Include="Ressources\chunk-full.txt">
+      <Filter>Fichiers de ressources</Filter>
+    </Text>
+    <Text Include="Ressources\map-empty.txt">
       <Filter>Fichiers de ressources</Filter>
     </Text>
   </ItemGroup>
@@ -55,5 +64,14 @@
     <ClInclude Include="Map.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="GameRenderer.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

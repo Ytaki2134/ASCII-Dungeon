@@ -4,12 +4,14 @@ void GameManager::CheckInputs()
 {
 	if (GetKeyState(VK_UP) & 0x8000)
 	{
-		m_map.RenderChunk(m_map.GetCurrentChunk() + 1);
+		m_map.setCurrentChunkId(m_map.GetCurrentChunkId() + 1);
+		m_gameRenderer.RenderScreen(m_map);
 		while (GetKeyState(VK_UP) & 0x8000);
 	}
 	if (GetKeyState(VK_DOWN) & 0x8000)
 	{
-		m_map.RenderChunk(m_map.GetCurrentChunk() - 1);
+		m_map.setCurrentChunkId(m_map.GetCurrentChunkId() - 1);
+		m_gameRenderer.RenderScreen(m_map);
 		while (GetKeyState(VK_DOWN) & 0x8000);
 	}
 	if (GetKeyState(VK_LEFT) & 0x8000)
@@ -29,14 +31,13 @@ void GameManager::CheckInputs()
 void GameManager::InitGame(std::string path)
 {
 	//Init Map
-	Map FirstMap;
-	FirstMap.ImportMap(path);
+	Map map;
+	map.ImportMap(path);
+	//Save Map
+	SetMap(map);
 
-	//Save Map to global
-	SetMap(FirstMap);
-
-	//Render First Room
-	FirstMap.RenderChunk(0);
+	//Render Visuals
+	m_gameRenderer.RenderScreen(m_map);
 }
 
 Map GameManager::GetMap()
