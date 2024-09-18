@@ -1,16 +1,15 @@
 #pragma once
+#include<iostream>
+class StateManager;
+
+
 class State
 {
-private:
-
-
-
+protected:
 
 public:
-
-	void OnEnter();
-	void OnUpdate();
-	void OnExit();
-
+	virtual void Enter(StateManager * stateManager) ;
+	virtual void Update(StateManager* stateManager) ;
+	virtual void Exit(StateManager* stateManager) ;
 };
 

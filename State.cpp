@@ -1,13 +1,13 @@
 #include "State.h"
 
-void State::OnEnter()
+void State::Enter(StateManager* stateManager)
 {
 }
 
-void State::OnUpdate()
+void State::Update(StateManager* stateManager)
 {
 }
 
-void State::OnExit()
+void State::Exit(StateManager* stateManager)
 {
 }

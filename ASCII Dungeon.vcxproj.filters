@@ -13,12 +13,45 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\All State">
+      <UniqueIdentifier>{107a5a4a-3156-4fea-a356-40402b1e54a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\AllState">
+      <UniqueIdentifier>{06056da4-5983-42f3-a671-3f301ca93baa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Enemy">
+      <UniqueIdentifier>{cd4c0a3a-ed4f-4cba-9682-d7d6484704f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ASCII Dungeon.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
+    <ClCompile Include="IdleState.cpp">
+      <Filter>Fichiers sources\AllState</Filter>
+    </ClCompile>
+    <ClCompile Include="NearPlayerState.cpp">
+      <Filter>Fichiers sources\AllState</Filter>
+    </ClCompile>
+    <ClCompile Include="CombatState.cpp">
+      <Filter>Fichiers sources\AllState</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Mobs.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DeathState.cpp">
+      <Filter>Fichiers sources\AllState</Filter>
+    </ClCompile>
+    <ClCompile Include="Golem.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="StateManager.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Chunk.cpp">
@@ -53,6 +86,33 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Mobs.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="StateManager.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="IdleState.h">
+      <Filter>Fichiers d%27en-tête\All State</Filter>
+    </ClInclude>
+    <ClInclude Include="CombatState.h">
+      <Filter>Fichiers d%27en-tête\All State</Filter>
+    </ClInclude>
+    <ClInclude Include="NearPlayerState.h">
+      <Filter>Fichiers d%27en-tête\All State</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="DeathState.h">
+      <Filter>Fichiers d%27en-tête\All State</Filter>
+    </ClInclude>
+    <ClInclude Include="Golem.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Chunk.h">
