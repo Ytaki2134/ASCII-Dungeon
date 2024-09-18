@@ -1,9 +1,10 @@
 #pragma once
 #include "State.h"
-class CombatState :public State
+class CombatState : public State
 {
-	void OnEnter(StateManager* state, Mobs* monster) override;
-	void OnUpdate(StateManager* state, Mobs* monster)override;
-	void OnExit(StateManager* state, Mobs* monster)override;
+public:
+	void Enter(StateManager* stateManager) override ;
+	void Update(StateManager* stateManager) override;
+	void Exit(StateManager* stateManager) override ;
 };
 

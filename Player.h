@@ -6,6 +6,6 @@ private:
 
 
 public:
-	void Attacked(int damage) { setLife(getLife() - damage); }
+	void Attacked(int damage) { setLife(getLife() - damage); };
 };
 

@@ -1,18 +1,24 @@
 #include "IdleState.h"
-
-void IdleState::OnEnter(StateManager* state, Mobs* monster)
+#include "StateManager.h"
+#include "Mobs.h"
+void IdleState::Enter(StateManager* stateManager)
 {
-	if (monster->ControlDistance())
-		state->ChangeState(state->GetNearPlayerState());
-	if (monster->getLife() == 0)
-		state->ChangeState(state->GetDeathState());
+	if (stateManager->GetMobs()->ControlDistance())
+		stateManager->ChangeState(stateManager->GetNearPlayerState());
+	if (stateManager->GetMobs()->getLife() == 0)
+		stateManager->ChangeState(stateManager->GetDeathState());
 	else
-		OnUpdate(state , monster);
+		Update(stateManager);
 }
 
-void IdleState::OnUpdate(StateManager* state, Mobs* monster)
+void IdleState::Update(StateManager* stateManager)
 {	
-	monster->Move();
-	OnExit(state, monster);
+	stateManager->GetMobs()->Move();
+	Exit(stateManager);
+}
+
+void IdleState::Exit(StateManager* stateManager)
+{
+	//patrol
 }
 

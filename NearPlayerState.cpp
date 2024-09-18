@@ -1,25 +1,29 @@
 #include "NearPlayerState.h"
-
-void NearPlayerState::OnEnter(StateManager* state, Mobs* monster)
+#include "StateManager.cpp"
+void NearPlayerState::Enter(StateManager* stateManager)
 {
-	if (!monster->ControlDistance())
-		state->ChangeState(state->GetIdle());
-	if (monster->getLife() == 0)
-		state->ChangeState(state->GetDeathState());
-	else
-		OnUpdate(state, monster);
+	
+	//if (!GetMobs()->ControlDistance())
+	//	GetStateManager()->ChangeState(GetStateManager()->GetIdle());
+	//if (GetMobs()->getLife() == 0)
+	//	GetStateManager()->ChangeState(GetStateManager()->GetDeathState());
+	//else
+		Update(stateManager);
 }
 
-void NearPlayerState::OnUpdate(StateManager* state, Mobs* monster)
+void NearPlayerState::Update(StateManager* stateManager)
 {
-	monster->Chase();
-	OnExit(state, monster);
+	//GetMobs()->Chase();
+	Exit(stateManager);
 }
 
-void NearPlayerState::OnExit(StateManager* state, Mobs* monster)
+void NearPlayerState::Exit(StateManager* stateManager)
 {
-	if (monster->ReadyToAttack()) {
-		state->ChangeState(state->GetCombatState());
-		state->GetCurrentState().OnEnter(state,monster);
-	}
+	//if (GetMobs()->ReadyToAttack()) {
+	//	GetStateManager()->ChangeState(GetStateManager()->GetCombatState());
+
+	//	GetStateManager()->GetCurrentState().SetStateManager(GetStateManager());
+
+	//	GetStateManager()->GetCurrentState().Enter();
+	//}
 }

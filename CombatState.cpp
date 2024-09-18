@@ -1,21 +1,22 @@
 #include "CombatState.h"
-
-void CombatState::OnEnter(StateManager* state, Mobs* monster)
+#include "StateManager.cpp"
+void CombatState::Enter(StateManager* stateManager)
 {
-	if (monster->getLife() == 0)
-		state->ChangeState(state->GetDeathState());
-	if(monster->GetDistance()>1)
-		state->ChangeState(state->GetNearPlayerState());
-	else
-		OnUpdate(state, monster);
+	//if (stateManager->GetMobs()->getLife() == 0)
+	//	stateManager->ChangeState(stateManager->GetDeathState());
+	//if(stateManager->GetMobs()->GetDistance()>1)
+	//	stateManager->ChangeState(GetStateManager()->GetNearPlayerState());
+	//else
+	//	Update(stateManager);
 }
 
-void CombatState::OnUpdate(StateManager* state, Mobs* monster)
+void CombatState::Update(StateManager* stateManager)
 {
-	monster->Attack();
-	OnExit(state, monster);
+	//GetMobs()->Attack();
+	//Exit();
 }
 
-void CombatState::OnExit(StateManager* state, Mobs* monster)
+void CombatState::Exit(StateManager* stateManager)
 {
+
 }

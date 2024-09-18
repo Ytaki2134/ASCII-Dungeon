@@ -1,18 +1,19 @@
 #include "DeathState.h"
-
-void DeathState::OnEnter(StateManager* state, Mobs* monster)
+#include "StateManager.cpp"
+void DeathState::Enter(StateManager* stateManager)
 {
 	// animation ou autres
-	OnUpdate(state,monster);
+	Update(stateManager);
 }
 
-void DeathState::OnUpdate(StateManager* state, Mobs* monster) 
+void DeathState::Update(StateManager* stateManager)
 {
 	//donner les recompenses
-	OnExit(state, monster);
+	Exit(stateManager);
 }
 
-void DeathState::OnExit(StateManager* state, Mobs* monster) 
+void DeathState::Exit(StateManager* stateManager)
 {
+	std::cout << "enemy kill" << std::endl;
 	//clear l'ennemie
 }

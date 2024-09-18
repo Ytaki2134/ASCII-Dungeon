@@ -1,14 +1,15 @@
 #pragma once
-#include "StateManager.h"
+#include<iostream>
+class StateManager;
+
+
 class State
 {
-private:
+protected:
 
 public:
-
-	virtual void OnEnter(StateManager* state, Mobs* monster)	=	0 ;
-	virtual void OnUpdate(StateManager* state, Mobs* monster)	=	0 ;
-	virtual void OnExit(StateManager* state, Mobs* monster)		=	0 ;
-
+	virtual void Enter(StateManager * stateManager) ;
+	virtual void Update(StateManager* stateManager) ;
+	virtual void Exit(StateManager* stateManager) ;
 };
 

@@ -135,6 +135,8 @@
     <ClCompile Include="Mobs.cpp" />
     <ClCompile Include="NearPlayerState.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="StateManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CombatState.h" />
