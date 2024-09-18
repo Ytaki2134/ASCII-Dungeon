@@ -5,13 +5,13 @@
 
 int main()
 {
-	bool gameRunning = true;
-	GameManager GameManager;
+	bool GameRunning = true;
+	GameManager gameManager;
 
-	GameManager.InitGame("Chunks/map-empty.txt");
+	gameManager.InitGame("Ressources/map-empty.txt");
 
-	while (gameRunning)
+	while (GameRunning)
 	{
-		GameManager.CheckInputs();
+		gameManager.CheckInputs();
 	}
 }

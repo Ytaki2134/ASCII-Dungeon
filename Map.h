@@ -7,13 +7,14 @@ public:
 	Map();
 
 	void ImportMap(std::string);
-	void RenderChunk(int);
 
-	std::vector<Chunk> GetMap();
-	int GetCurrentChunk();
+	std::vector<Chunk> GetChunkVector();
+	Chunk GetCurrentChunk();
+	int GetCurrentChunkId();
+	void setCurrentChunkId(int);
 
 private:
 	std::vector<Chunk> m_ChunkVector;
-	int m_currentChunk;
+	int m_currentChunk = 0;
 };
 

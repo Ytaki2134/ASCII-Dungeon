@@ -1,6 +1,7 @@
 #pragma once
 #include <windows.h>
 #include "map.h"
+#include "GameRenderer.h"
 
 class GameManager
 {
@@ -12,6 +13,7 @@ public:
 private:
 	void SetMap(Map);
 
+	GameRenderer m_gameRenderer;
 	Map m_map;
 };
 
