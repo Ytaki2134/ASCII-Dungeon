@@ -15,7 +15,6 @@ public:
 	void InitGame(std::string);
 	Map GetMap();
 	std::vector<Entity*> listMobs;
-	
 
 private:
 	void SetMap(Map);

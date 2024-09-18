@@ -36,15 +36,24 @@ void GameManager::ScanEntities()
 	for (int i = 0; i < ARRAY_SIZE; i++)
 	{
 		std::string tempString = tempChunk.getChunk(false)[i];
+		std::tuple<int, int> tempTuple;
 		for (int j = 0; j < tempString.size(); j++)
 		{
+			tempTuple = { i, j };
 			switch (tempString[j])
 			{
+			case 46:
+			{
+				break;
+			}
 			//@ - Player
 			case 64:
-				//Player _player;
-				//setPosition
+			{
+				Player _player;
+				_player.SetPosition(tempTuple);
+				m_entityVector.push_back(_player);
 				break;
+			}
 			default:
 				break;
 			}
