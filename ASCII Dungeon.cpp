@@ -1,21 +1,20 @@
 // ASCII Dungeon.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
 //
 #pragma once
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <string>
+#include "GameManager.h"
+#include "GameRenderer.h"
 
 #include "map.h"
 
 int main()
 {
-	Chunk FirstChunk;
-	Map FirstMap;
+	bool GameRunning = true;
+	GameManager gameManager;
 
-	/*FirstChunk.ImportChunk("Chunks/chunk-empty.txt");
-	FirstChunk.RenderChunk();*/
+	gameManager.InitGame("Ressources/map-empty.txt");
 
-	FirstMap.ImportMap("Chunks/map-empty.txt");
-	FirstMap.GetMap()[0].RenderChunk();
+	while (GameRunning)
+	{
+		gameManager.CheckInputs();
+	}
 }

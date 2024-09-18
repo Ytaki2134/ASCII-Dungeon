@@ -10,14 +10,14 @@
 class Chunk
 {
 public:
+#define ARRAY_SIZE 16
 	Chunk();
 
 	void ImportChunk(std::string);
-	void RenderChunk();
 
-	void SetChunk(int, int, char);
-	void SetChunk(int, int, std::string);
+	void SetChunkCoords(int, int, char);
+	void SetChunkCoords(int, int, std::string);
+	std::vector<std::string> getChunk();
 private:
 	std::string chunk[ARRAY_SIZE][ARRAY_SIZE];
 };
-

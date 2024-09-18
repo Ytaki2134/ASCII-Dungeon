@@ -20,18 +20,18 @@ void Map::ImportMap(std::string path)
 		}
 	}
 
-	for (size_t i = 0; i < chunkCount; i++)
+	for (int i = 0; i < chunkCount; i++)
 	{
 		Chunk tempChunk;
 		//Step - 0,17,34 ...
 		int step = (ARRAY_SIZE + 1) * i;
 
 		//X axis - 0 to 16
-		for (size_t j = 0; j < ARRAY_SIZE; j++)
+		for (int j = 0; j < ARRAY_SIZE; j++)
 		{
 			currentLine = outputs[j + step];
 			//Y axis - 0 to 16
-			for (size_t k = 0; k < ARRAY_SIZE; k++)
+			for (int k = 0; k < ARRAY_SIZE; k++)
 			{
 				tempChunk.SetChunk(j, k, currentLine[k]);
 			}
@@ -42,5 +42,20 @@ void Map::ImportMap(std::string path)
 
 std::vector<Chunk> Map::GetMap()
 {
-	return Map::m_ChunkVector;
+	return m_ChunkVector;
+}
+
+Chunk Map::GetCurrentChunk()
+{
+	return m_ChunkVector[GetCurrentChunkId()];
+}
+
+int Map::GetCurrentChunkId()
+{
+	return m_currentChunk;
+}
+
+void Map::setCurrentChunkId(int newId)
+{
+	m_currentChunk = newId;
 }

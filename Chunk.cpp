@@ -4,6 +4,8 @@ Chunk::Chunk()
 {
 }
 
+
+
 void Chunk::ImportChunk(std::string path)
 {
 	std::vector<std::string> outputs;
@@ -26,24 +28,42 @@ void Chunk::ImportChunk(std::string path)
 	}
 }
 
-void Chunk::RenderChunk()
+//void Chunk::RenderChunk()
+//{
+//	for (size_t i = 0; i < ARRAY_SIZE; i++)
+//	{
+//		std::string currentLine;
+//		for (size_t j = 0; j < ARRAY_SIZE; j++)
+//		{
+//			currentLine = currentLine + " " + m_chunk[i][j] + " ";
+//		}
+//		std::cout << currentLine << std::endl;
+//	}
+//}
+
+void Chunk::SetChunkCoords(int x, int y, char content)
 {
+	chunk[x][y] = content;
+}
+
+void Chunk::SetChunkCoords(int x, int y, std::string content)
+{
+	chunk[x][y] = content;
+}
+
+std::vector<std::string> Chunk::getChunk()
+{
+	std::vector<std::string> vector;
+
 	for (size_t i = 0; i < ARRAY_SIZE; i++)
 	{
+		std::string currentLine;
 		for (size_t j = 0; j < ARRAY_SIZE; j++)
 		{
-			std::cout << Chunk::chunk[i][j];
+			currentLine = currentLine + " " + m_chunk[i][j] + " ";
 		}
-		std::cout << std::endl;
+		vector.push_back(currentLine);
 	}
-}
 
-void Chunk::SetChunk(int x, int y, char content)
-{
-	chunk[x][y] = content;
-}
-
-void Chunk::SetChunk(int x, int y , std::string content)
-{
-	chunk[x][y] = content;
+	return vector;
 }
