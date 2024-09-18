@@ -137,6 +137,15 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateManager.cpp" />
+    <ClCompile Include="Chunk.cpp" />
+    <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="Global.cpp" />
+    <ClCompile Include="Map.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Chunks\chunk-empty.txt" />
+    <Text Include="Chunks\chunk-full.txt" />
+    <Text Include="Chunks\map-empty.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CombatState.h" />
@@ -149,6 +158,10 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateManager.h" />
+    <ClInclude Include="Chunk.h" />
+    <ClInclude Include="GameManager.h" />
+    <ClInclude Include="Global.h" />
+    <ClInclude Include="Map.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
