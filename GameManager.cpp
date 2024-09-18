@@ -1,4 +1,7 @@
 #include "GameManager.h"
+#include "Player.h"
+#include "Golem.h"
+
 
 void GameManager::CheckInputs()
 {
@@ -43,6 +46,18 @@ void GameManager::InitGame(std::string path)
 Map GameManager::GetMap()
 {
 	return m_map;
+}
+
+void GameManager::Try()
+{
+	Player a;
+	Golem b;
+
+	a.SetPosition(std::tuple<int, int>(10, 10));
+	b.SetPlayer(&a);
+	b.SetPosition(std::tuple<int, int>(10, 7));
+	b.Chase();
+
 }
 
 void GameManager::SetMap(Map map)

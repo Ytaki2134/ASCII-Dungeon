@@ -11,8 +11,8 @@ public:
 	void CheckInputs();
 	void InitGame(std::string);
 	Map GetMap();
-	std::vector<Entity*> listMobs;
-	
+	std::vector<Entity> listMobs;
+	void Try();
 
 private:
 	void SetMap(Map);

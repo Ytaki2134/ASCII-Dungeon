@@ -5,13 +5,14 @@
 
 int main()
 {
-	bool GameRunning = true;
+	//bool GameRunning = true;
 	GameManager gameManager;
 
-	gameManager.InitGame("Ressources/map-empty.txt");
-
-	while (GameRunning)
+	//gameManager.InitGame("Ressources/map-empty.txt");
+	gameManager.Try();
+	
+	/*while (GameRunning)
 	{
 		gameManager.CheckInputs();
-	}
+	}*/
 }

@@ -31,6 +31,7 @@ public:
 	int GetDistance();
 	int CalculDistance(std::tuple<int, int> pos);
 	Player* GetPlayer() ;
+	void SetPlayer(Player* pl);
 
 	//virtual RecompenseOnDeath getRecompenseOnDeat(){return dethmob;}
 	//virtual StateMachine getStateMachine(){return ia;}

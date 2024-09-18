@@ -24,3 +24,8 @@ Player* Mobs::GetPlayer()
 {
     return player;
 }
+
+void Mobs::SetPlayer(Player* pl)
+{
+    player = pl;
+}
