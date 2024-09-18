@@ -8,7 +8,7 @@ public:
 
 	void ImportMap(std::string);
 
-	std::vector<Chunk> GetMap();
+	std::vector<Chunk> GetChunkVector();
 	Chunk GetCurrentChunk();
 	int GetCurrentChunkId();
 	void setCurrentChunkId(int);

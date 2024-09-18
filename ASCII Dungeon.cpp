@@ -2,9 +2,6 @@
 //
 #pragma once
 #include "GameManager.h"
-#include "GameRenderer.h"
-
-#include "map.h"
 
 int main()
 {

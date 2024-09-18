@@ -33,14 +33,14 @@ void Map::ImportMap(std::string path)
 			//Y axis - 0 to 16
 			for (int k = 0; k < ARRAY_SIZE; k++)
 			{
-				tempChunk.SetChunk(j, k, currentLine[k]);
+				tempChunk.SetChunkCoords(j, k, currentLine[k]);
 			}
 		}
 		m_ChunkVector.push_back(tempChunk);
 	}
 }
 
-std::vector<Chunk> Map::GetMap()
+std::vector<Chunk> Map::GetChunkVector()
 {
 	return m_ChunkVector;
 }

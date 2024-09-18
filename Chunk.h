@@ -19,5 +19,5 @@ public:
 	void SetChunkCoords(int, int, std::string);
 	std::vector<std::string> getChunk();
 private:
-	std::string chunk[ARRAY_SIZE][ARRAY_SIZE];
+	std::string m_chunk[ARRAY_SIZE][ARRAY_SIZE];
 };
