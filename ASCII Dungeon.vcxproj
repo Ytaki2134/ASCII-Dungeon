@@ -133,7 +133,6 @@
     <ClCompile Include="Chunk.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameRenderer.cpp" />
-    <ClCompile Include="Global.cpp" />
     <ClCompile Include="Map.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -146,7 +145,6 @@
     <ClInclude Include="Chunk.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameRenderer.h" />
-    <ClInclude Include="Global.h" />
     <ClInclude Include="Map.h" />
   </ItemGroup>
   <ItemGroup>
