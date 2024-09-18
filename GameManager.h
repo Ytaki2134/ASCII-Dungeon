@@ -8,6 +8,8 @@ class GameManager
 
 public:
 	void CheckInputs();
+	void CheckDoor();
+	void ScanEntities();
 	void InitGame(std::string);
 	Map GetMap();
 private:

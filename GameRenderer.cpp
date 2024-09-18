@@ -25,7 +25,7 @@ void GameRenderer::ImportTitle(std::string path)
 	}
 }
 
-void GameRenderer::RenderScreen(Map map)
+void GameRenderer::RenderScreen(Map map, std::vector<Entity>)
 {
 	std::system("cls");
 	RenderTitle();
@@ -40,12 +40,22 @@ void GameRenderer::RenderTitle()
 	}
 }
 
-void GameRenderer::RenderChunk(std::vector<std::string> vector)
+void GameRenderer::RenderChunk(std::vector<std::string> mapVector, std::vector<std::string> mobVector)
 {
 	for (size_t i = 0; i < ARRAY_SIZE; i++)
 	{
-		std::cout << Center(vector[i]) << std::endl;
+		std::string tempString = mapVector[i];
+		for (int j = 0; j < tempString.size(); j++)
+		{
+			
+		}
+		std::cout << Center(tempString) << std::endl;
 	}
 }
+
+//void GameRenderer::ColorStringChar(int charID, std::ostream*)
+//{
+//
+//}
 
 
