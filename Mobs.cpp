@@ -4,28 +4,35 @@
 
 bool Mobs::ControlDistance()
 {
-    if (GetDistance() < detection)
-        return true;
-    else
-        return false;
+	if (GetDistance() < detection)
+		return true;
+	else
+		return false;
 }
 
 int Mobs::GetDistance()
-{ 
-    return  (std::get<0>(GetPosition()) - std::get<0>(player->GetPosition())) + (std::get<1>(GetPosition()) - std::get<1>(player->GetPosition())); 
+{
+	return  (std::get<0>(GetPosition()) - std::get<0>(player->GetPosition())) + (std::get<1>(GetPosition()) - std::get<1>(player->GetPosition()));
 }
 
-int Mobs::CalculDistance(std::tuple<int, int> pos) 
+int Mobs::CalculDistance(std::tuple<int, int> pos)
 {
-    return  (std::get<0>(pos) - std::get<0>(player->GetPosition())) + (std::get<1>(pos) - std::get<1>(player->GetPosition())); 
+	return  (std::get<0>(pos) - std::get<0>(player->GetPosition())) + (std::get<1>(pos) - std::get<1>(player->GetPosition()));
 }
 
 Player* Mobs::GetPlayer()
 {
-    return player;
+	return player;
 }
 
 void Mobs::SetPlayer(Player* pl)
 {
-    player = pl;
+	player = pl;
+}
+
+int Mobs::GetID() { return Id; }
+
+void Mobs::SetId(int newId)
+{
+	Id = newId;
 }

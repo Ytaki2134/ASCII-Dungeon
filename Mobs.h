@@ -35,8 +35,8 @@ public:
 	Player* GetPlayer() ;
 	void SetPlayer(Player* pl);
 
-	int GetID() { return Id; };
-	void SetId(int newId) { Id = newId; };
+	int GetID() ;
+	void SetId(int newId) };
 
 
 	//virtual RecompenseOnDeath getRecompenseOnDeat(){return dethmob;}

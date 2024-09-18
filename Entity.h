@@ -23,7 +23,7 @@ public:
 	virtual void setDammage(int newdamage) { damage = newdamage; };
 	virtual void setEnergy(int newenergy) { energy = newenergy; };
 	virtual void setburn(bool _burn) { burn = _burn; };
-	virtual void setFreeze(bool _frezze) { freeze = -_frezze; };
+	virtual void setFreeze(bool _frezze) { freeze = _frezze;};
 	virtual std::tuple<int,int> GetPosition() { return position; };
 	virtual void SetPosition(std::tuple<int, int> pos) { position = pos; };
 };
