@@ -30,9 +30,3 @@ void Mobs::SetPlayer(Player* pl)
 	player = pl;
 }
 
-int Mobs::GetID() { return Id; }
-
-void Mobs::SetId(int newId)
-{
-	Id = newId;
-}

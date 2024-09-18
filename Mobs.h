@@ -9,7 +9,6 @@ private:
 
 	Player* player;
 	int detection = 6;
-	int Id;
 
 	StateManager* stateManager ;
 	// RecompenseOnDeath deathmob;
@@ -35,8 +34,7 @@ public:
 	Player* GetPlayer() ;
 	void SetPlayer(Player* pl);
 
-	int GetID() ;
-	void SetId(int newId) };
+
 
 
 	//virtual RecompenseOnDeath getRecompenseOnDeat(){return dethmob;}

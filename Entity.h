@@ -3,6 +3,7 @@
 class Entity
 {
 protected:
+	int Id;
 	int life;
 	int damage;
 	int energy;
@@ -11,7 +12,8 @@ protected:
 	std::tuple<int,int> position;
 
 public: 
-	
+	int GetID() {return Id;};
+	void SetId(int newId) { Id = newId; };
 	virtual int  getLife() { return life; };
 	virtual int  getDamage() { return damage; };
 	virtual int  getEnergy() { return energy; };
