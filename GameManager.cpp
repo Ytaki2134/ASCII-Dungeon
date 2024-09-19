@@ -1,6 +1,4 @@
 #include "GameManager.h"
-#include "Player.h"
-#include "Golem.h"
 #include <cassert>
 
 GameManager::GameManager()
@@ -24,7 +22,7 @@ void GameManager::CheckInputs()
 	if (GetKeyState(VK_DOWN) & 0x8000)
 	{
 		Vector2 vector2 = m_player.GetPosition();
-		if (vector2.GetVector()[0] >= ARRAY_SIZE-1)
+		if (vector2.GetVector()[0] >= ARRAY_SIZE - 1)
 			return;
 
 		MoveEntity(&m_player, 0, 1);
@@ -44,7 +42,7 @@ void GameManager::CheckInputs()
 	if (GetKeyState(VK_RIGHT) & 0x8000)
 	{
 		Vector2 vector2 = m_player.GetPosition();
-		if (vector2.GetVector()[1] >= ARRAY_SIZE-1)
+		if (vector2.GetVector()[1] >= ARRAY_SIZE - 1)
 			return;
 
 		MoveEntity(&m_player, 1, 1);
@@ -127,9 +125,16 @@ Entity GameManager::GetEntity(int id)
 	return m_entityVector[id];
 }
 
-Mobs GameManager::GetLastMobSelected()
+Mobs* GameManager::GetLastMobSelected()
 {
-	return m_lastMobSelect;
+	if (m_lastMobSelect) 
+	{
+		return m_lastMobSelect;
+	}
+	else 
+	{
+		return NULL;
+	}
 }
 
 Player GameManager::GetPlayer()

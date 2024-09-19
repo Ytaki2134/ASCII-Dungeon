@@ -1,10 +1,12 @@
 #pragma once
 #include "Vector2.h"
+#include <string>
 
 class Entity
 {
 protected:
 	int Id;
+	std::string name;
 	int life;
 	int maxLife;
 	int damage;
@@ -17,6 +19,7 @@ protected:
 
 public: 
 	int GetID() { return Id; };
+	virtual std::string GetName() { return name; };
 	virtual int GetLife() { return life; };
 	virtual int GetMaxLife() { return maxLife; };
 	virtual int GetDamage() { return damage; };
@@ -26,6 +29,7 @@ public:
 	virtual char GetToken() { return token; };
 
 	void SetId(int newId) { Id = newId; };
+	virtual void SetName(std::string newName) { name = newName; };
 	virtual void SetLife(int newlife) { life = newlife; };
 	virtual void SetMaxLife(int newMaxLife) { maxLife = newMaxLife; };
 	virtual void SetDamage(int newdamage) { damage = newdamage; };

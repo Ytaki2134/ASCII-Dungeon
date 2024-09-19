@@ -23,7 +23,7 @@ public:
 
 	Map GetMap();
 	Entity GetEntity(int Id);
-	Mobs GetLastMobSelected();
+	Mobs* GetLastMobSelected();
 	Player GetPlayer();
 
 	static GameManager* get();
@@ -33,7 +33,7 @@ private:
 	GameRenderer m_gameRenderer;
 	Map m_map;
 	std::vector<Entity> m_entityVector;
-	Mobs m_lastMobSelect;
+	Mobs* m_lastMobSelect;
 	Player m_player;
 
 	static inline GameManager* instance = nullptr;
