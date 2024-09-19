@@ -152,6 +152,15 @@ void GameManager::DeleteEntity(int id)
 	m_entityVector.erase(m_entityVector.begin() + id);
 }
 
+bool GameManager::TestPosition(std::tuple<int, int> pos)
+{
+	auto map = GetMap().GetCurrentChunk().getChunk(false);
+	if (map[std::get<1>(pos)][std::get<0>(pos)] == '.')
+		return true;
+	else
+		return false;
+}
+
 GameManager* GameManager::get()
 {
 	if (!instance)

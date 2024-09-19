@@ -18,6 +18,8 @@ public:
 	void Try();
 	Entity GetEntity(int Id);
 	void DeleteEntity(int id);
+	bool TestPosition(std::tuple<int, int> pos);
+
 
 	static GameManager* get();
 private:
