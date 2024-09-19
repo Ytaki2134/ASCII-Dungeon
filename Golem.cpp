@@ -68,7 +68,7 @@ void Golem::Chase()
 		betterpos = right;
 	}
 	//std::find(gameManager->listMobs.begin(), gameManager->listMobs.end(), dynamic_cast<Entity*>(this))[0]->SetPosition(betterpos);
-	std::cout<<"position:" << std::get<0>(betterpos) << " , " << std::get<1>(betterpos) << std::endl;
+
 }
 
 void Golem::Attack()

@@ -29,5 +29,5 @@ public:
 	virtual void setFreeze(bool _freeze) { freeze = _freeze;};
 	virtual Vector2 GetPosition() { return position; };
 	virtual void SetPosition(Vector2 pos) { position = pos; };
-	virtual void SetPosition(int x, int y) { Vector2 vector; vector.SetVector(x, y); position = vector; };
+	virtual void SetPosition(int x, int y) { Vector2 vector(x,y); position = vector; };
 };
