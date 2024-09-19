@@ -5,6 +5,7 @@
 #include <string_view>
 #include "map.h"
 #include "Entity.h"
+#include "Mobs.h"
 #include "Player.h"
 #include "GameRenderer.h"
 
@@ -22,6 +23,8 @@ public:
 
 	Map GetMap();
 	Entity GetEntity(int Id);
+	Mobs GetLastMobSelected();
+	Player GetPlayer();
 
 	static GameManager* get();
 private:
@@ -30,6 +33,7 @@ private:
 	GameRenderer m_gameRenderer;
 	Map m_map;
 	std::vector<Entity> m_entityVector;
+	Mobs m_lastMobSelect;
 	Player m_player;
 
 	static inline GameManager* instance = nullptr;

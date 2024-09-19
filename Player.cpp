@@ -4,6 +4,8 @@ Player::Player()
 {
 	SetToken('@');
 	SetLastTile('.');
+	SetMaxLife(100);
+	SetLife(maxLife);
 }
 
 std::string Player::GetLastTile()

@@ -127,6 +127,16 @@ Entity GameManager::GetEntity(int id)
 	return m_entityVector[id];
 }
 
+Mobs GameManager::GetLastMobSelected()
+{
+	return m_lastMobSelect;
+}
+
+Player GameManager::GetPlayer()
+{
+	return m_player;
+}
+
 void GameManager::DeleteEntity(int id)
 {
 	m_entityVector.erase(m_entityVector.begin() + id);
@@ -152,7 +162,7 @@ void GameManager::MoveEntity(Entity* entity, int axis, int speed)
 	entity->SetPosition(Position);
 	entity->SetLastTile(m_map.GetCurrentChunk().getChunk(false)[Position.GetVector()[0]][Position.GetVector()[1]]);
 	CheckDoor(Position);
-	m_map.SetCurrentChunkCoords(Position.GetVector()[0], Position.GetVector()[1], entity->getToken());
+	m_map.SetCurrentChunkCoords(Position.GetVector()[0], Position.GetVector()[1], entity->GetToken());
 	m_gameRenderer.RenderScreen(m_map);
 }
 

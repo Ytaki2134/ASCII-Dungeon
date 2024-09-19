@@ -10,7 +10,7 @@ void NearPlayerState::Enter(StateManager* stateManager)
 	
 	if (!stateManager->GetMobs()->ControlDistance())
 		stateManager->ChangeState(dynamic_cast<State*>(stateManager->GetIdle()));
-	if (stateManager->GetMobs()->getLife() == 0)
+	if (stateManager->GetMobs()->GetLife() == 0)
 		stateManager->ChangeState(dynamic_cast<State*>(stateManager->GetDeathState()));
 	else
 		Update(stateManager);

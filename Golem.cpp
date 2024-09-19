@@ -73,7 +73,7 @@ void Golem::Chase()
 
 void Golem::Attack()
 {
-	GetPlayer()->Attacked(getDamage());
+	GetPlayer()->Attacked(GetDamage());
 }
 
 void Golem::Death()
