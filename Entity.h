@@ -34,4 +34,5 @@ public:
 	virtual void SetPosition(int x, int y) { Vector2 vector(x,y); position = vector; };
 	virtual void SetLastTile(char tile) { lastTile = tile; } ;
 	virtual void SetToken(char newToken) { token = newToken; }
+	virtual void TakeDamage(int damage) { life -= damage; };
 };

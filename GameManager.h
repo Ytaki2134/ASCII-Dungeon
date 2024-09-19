@@ -17,7 +17,6 @@ public:
 	void CheckDoor();
 	void ScanEntities();
 	void InitGame(std::string);
-	void DeleteEntity(int id);
 	void MoveEntity(Entity*, int, int);
 
 	Map GetMap();
