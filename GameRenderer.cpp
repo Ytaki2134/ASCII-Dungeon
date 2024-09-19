@@ -25,7 +25,7 @@ void GameRenderer::ImportTitle(std::string path)
 	}
 }
 
-void GameRenderer::RenderScreen(Map map, std::vector<Entity>)
+void GameRenderer::RenderScreen(Map map)
 {
 	std::system("cls");
 	RenderTitle();

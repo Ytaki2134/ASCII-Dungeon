@@ -53,14 +53,14 @@ void GameManager::CheckInputs()
 	}
 }
 
-void GameManager::CheckDoor()
+void GameManager::CheckDoor(Vector2 nextPos)
 {
-	Vector2 vector2 = m_player.GetPosition();
-	std::string currentLine = m_map.GetCurrentChunk().getChunk(false)[vector2.GetVector()[0]];
-	if (currentLine[vector2.GetVector()[1]] == '^' && m_map.GetCurrentChunkId() < m_map.GetChunkVector().size())
+	std::string currentLine = m_map.GetCurrentChunk().getChunk(false)[nextPos.GetVector()[0]];
+	if (currentLine[nextPos.GetVector()[1]] == '^' && m_map.GetCurrentChunkId() < m_map.GetChunkVector().size())
 	{
 		//Check if all room mobs are dead
 		m_map.setCurrentChunkId(m_map.GetCurrentChunkId() + 1);
+		m_player.SetLastTile('.');
 		//Clear Mob list to avoid memory leak
 		ScanEntities();
 		m_gameRenderer.RenderScreen(m_map);
@@ -151,9 +151,9 @@ void GameManager::MoveEntity(Entity* entity, int axis, int speed)
 
 	entity->SetPosition(Position);
 	entity->SetLastTile(m_map.GetCurrentChunk().getChunk(false)[Position.GetVector()[0]][Position.GetVector()[1]]);
+	CheckDoor(Position);
 	m_map.SetCurrentChunkCoords(Position.GetVector()[0], Position.GetVector()[1], entity->getToken());
 	m_gameRenderer.RenderScreen(m_map);
-	CheckDoor();
 }
 
 GameManager* GameManager::get()
