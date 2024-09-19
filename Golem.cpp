@@ -6,67 +6,69 @@
 
 void Golem::Move()
 {
-	srand(time(NULL));
+
+	/*srand(time(NULL));
 	int direction = (rand() % 4) + 1;
 	auto mob = gameManager->GetEntity(GetID());
 
 	switch (direction)
 	{
 	case 0:
-		if (gameManager->TestPosition(std::tuple<int, int>(std::get<0>(GetPosition()) + 1, std::get<1>(GetPosition()))))
-			mob.SetPosition(std::tuple<int, int>(std::get<0>(GetPosition()) + 1, std::get<1>(GetPosition())));
-		break;
+		if (gameManager->TestPosition(GetPosition().GetVector()[0] + 1, GetPosition().GetVector()[1]))
+			mob.SetPosition(GetPosition().GetVector()[0] + 1, GetPosition().GetVector()[1]);
+			
 	case 1:
-		if (gameManager->TestPosition(std::tuple<int, int>(std::get<0>(GetPosition()) - 1, std::get<1>(GetPosition()))))
-			mob.SetPosition(std::tuple<int, int>(std::get<0>(GetPosition()) - 1, std::get<1>(GetPosition())));
+		if (gameManager->TestPosition((GetPosition().GetVector()[0] - 1, GetPosition().GetVector()[1])))	
+			mob.SetPosition(GetPosition().GetVector()[0] - 1, GetPosition().GetVector()[1]);
 		break;
 	case 2:
-		if (gameManager->TestPosition(std::tuple<int, int>(std::get<0>(GetPosition()), std::get<1>(GetPosition()) + 1)))
-			mob.SetPosition(std::tuple<int, int>(std::get<0>(GetPosition()), std::get<1>(GetPosition()) + 1));
+		if (gameManager->TestPosition(GetPosition().GetVector()[0], GetPosition().GetVector()[1] + 1))
+			mob.SetPosition(GetPosition().GetVector()[0], GetPosition().GetVector()[1] + 1);
 		break;
 	case 3:
-		if (gameManager->TestPosition(std::tuple<int, int>(std::get<0>(GetPosition()), std::get<1>(GetPosition()) - 1)))
-			mob.SetPosition(std::tuple<int, int>(std::get<0>(GetPosition()), std::get<1>(GetPosition()) - 1));
+		if (gameManager->TestPosition(GetPosition().GetVector()[0], GetPosition().GetVector()[1] - 1))
+			mob.SetPosition(GetPosition().GetVector()[0], GetPosition().GetVector()[1] - 1);
 		break;
 
 	default:
 		break;
-	}
+	}*/
 }
 
 void Golem::Chase()
 {
-	std::tuple<int, int> actualpos = GetPosition();
-	std::tuple<int, int> betterpos = std::tuple<int, int>(100, 100);
 
-	std::tuple<int, int> up = std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) + 1);
-	std::tuple<int, int> down = std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) - 1);
-	std::tuple<int, int> right = std::tuple<int, int>(std::get<0>(actualpos) + 1, std::get<1>(actualpos));
-	std::tuple<int, int> left = std::tuple<int, int>(std::get<0>(actualpos) - 1, std::get<1>(actualpos));
-	
-		
-	int bestdist = CalculDistance(betterpos);
-	if (int a = CalculDistance(up) < bestdist && gameManager->TestPosition(up)) {
-		bestdist = a;
-		betterpos = up;
-	}
-	if (int a = CalculDistance(down) < bestdist && gameManager->TestPosition(down)) {
+	//Vector2 actualpos = GetPosition();
+	//Vector2 betterpos = Vector2(100, 100);
 
-		bestdist = a;
-		betterpos = down;
-	}
-	if (int a = CalculDistance(left) < bestdist && gameManager->TestPosition(left)) {
+	//Vector2 up = Vector2(GetPosition().GetVector()[0] , GetPosition().GetVector()[1]+1);
+	//Vector2 down = Vector2(GetPosition().GetVector()[0], GetPosition().GetVector()[1] - 1);
+	//Vector2 right = Vector2(GetPosition().GetVector()[0] +1, GetPosition().GetVector()[1]);
+	//Vector2 left = Vector2(GetPosition().GetVector()[0] -1, GetPosition().GetVector()[1] );
 
-		bestdist = a;
-		betterpos = left;
-	}
-	if (int a = CalculDistance(right) < bestdist && gameManager->TestPosition(right)) {
-		
-		bestdist = a;
-		betterpos = right;
-	}
-	
-	SetPosition(betterpos);
+
+	//int bestdist = CalculDistance(betterpos);
+	//if (int a = CalculDistance(up) < bestdist && gameManager->TestPosition(up)) {
+	//	bestdist = a;
+	//	betterpos = up;
+	//}
+	//if (int a = CalculDistance(down) < bestdist && gameManager->TestPosition(down)) {
+
+	//	bestdist = a;
+	//	betterpos = down;
+	//}
+	//if (int a = CalculDistance(left) < bestdist && gameManager->TestPosition(left)) {
+
+	//	bestdist = a;
+	//	betterpos = left;
+	//}
+	//if (int a = CalculDistance(right) < bestdist && gameManager->TestPosition(right)) {
+
+	//	bestdist = a;
+	//	betterpos = right;
+	//}
+	////std::find(gameManager->listMobs.begin(), gameManager->listMobs.end(), dynamic_cast<Entity*>(this))[0]->SetPosition(betterpos);
+	//std::cout<<"position:" << std::get<0>(betterpos) << " , " << std::get<1>(betterpos) << std::endl;
 }
 
 void Golem::Attack()

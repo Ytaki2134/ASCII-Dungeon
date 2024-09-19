@@ -6,13 +6,12 @@
 int main()
 {
 	bool GameRunning = true;
-	GameManager gameManager;
+	GameManager* gameManager = GameManager::get();
 
-	gameManager.InitGame("Ressources/map-empty.txt");
-	//gameManager.Try();
+	gameManager->InitGame("Ressources/map-empty.txt");
 	
 	while (GameRunning)
 	{
-		gameManager.CheckInputs();
+		gameManager->CheckInputs();
 	}
 }

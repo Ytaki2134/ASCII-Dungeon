@@ -37,7 +37,7 @@ int Mobs::GetDistance()
 	return   player_x + player_y;
 }
 
-int Mobs::CalculDistance(std::tuple<int, int> pos)
+int Mobs::CalculDistance(Vector2 pos)
 {
 	int distance_x = std::get<0>(player->GetPosition()) - std::get<0>(pos);
 	if (distance_x < 0)
