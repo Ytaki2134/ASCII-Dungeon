@@ -11,6 +11,8 @@ protected:
 	bool burn	= 0;
 	bool freeze = 0;
 	Vector2 position;
+	char lastTile;
+	char token;
 
 public: 
 	int GetID() {return Id;};
@@ -20,7 +22,7 @@ public:
 	virtual int  getEnergy() { return energy; };
 	virtual bool getBurn() { return burn; };
 	virtual bool getFreeze() { return freeze; };
-
+	virtual char getToken() { return token; };
 
 	virtual void setLife(int newlife) { life = newlife; };
 	virtual void setDammage(int newdamage) { damage = newdamage; };
@@ -30,4 +32,6 @@ public:
 	virtual Vector2 GetPosition() { return position; };
 	virtual void SetPosition(Vector2 pos) { position = pos; };
 	virtual void SetPosition(int x, int y) { Vector2 vector(x,y); position = vector; };
+	virtual void SetLastTile(char tile) { lastTile = tile; } ;
+	virtual void SetToken(char newToken) { token = newToken; }
 };

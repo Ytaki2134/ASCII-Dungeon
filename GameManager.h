@@ -14,10 +14,11 @@ class GameManager
 
 public:
 	void CheckInputs();
+	void CheckDoor();
 	void ScanEntities();
 	void InitGame(std::string);
 	void DeleteEntity(int id);
-	void MoveEntity(Entity, std::tuple<int, int>, axis, int);
+	void MoveEntity(Entity*, int, int);
 
 	Map GetMap();
 	Entity GetEntity(int Id);
@@ -30,7 +31,6 @@ private:
 	Map m_map;
 	std::vector<Entity> m_entityVector;
 	Player m_player;
-
 
 	static inline GameManager* instance = nullptr;
 };

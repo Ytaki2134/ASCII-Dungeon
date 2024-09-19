@@ -56,6 +56,11 @@ void Map::SetCurrentChunkCoords(int x, int y, std::string content)
 	m_chunkVector[m_currentChunkId].SetChunkCoords(x, y, content);
 }
 
+void Map::SetCurrentChunkCoords(int x, int y, char content)
+{
+	m_chunkVector[m_currentChunkId].SetChunkCoords(x, y, content);
+}
+
 int Map::GetCurrentChunkId()
 {
 	return m_currentChunkId;

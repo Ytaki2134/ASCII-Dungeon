@@ -4,12 +4,10 @@
 class Player : public Entity
 {
 private:
-	char m_lastTile = '.';
 
 public:
-
+	Player();
 	std::string GetLastTile();
-	void SetLastTile(char);
 	void Attacked(int damage) { setLife(getLife() - damage); };
 };
 

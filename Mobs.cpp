@@ -12,7 +12,8 @@ bool Mobs::ControlDistance()
 
 int Mobs::GetDistance()
 {
-	return  (std::get<0>(GetPosition()) - std::get<0>(player->GetPosition())) + (std::get<1>(GetPosition()) - std::get<1>(player->GetPosition()));
+	//return  (std::get<0>(GetPosition()) - std::get<0>(player->GetPosition())) + (std::get<1>(GetPosition()) - std::get<1>(player->GetPosition()));
+	return 5;
 }
 
 int Mobs::CalculDistance(Vector2 pos)
