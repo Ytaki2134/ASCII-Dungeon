@@ -24,28 +24,31 @@ void Mobs::Move()
 	switch (directionInt)
 	{
 	case 0:
-		direction = Vector2(GetPosition().GetVector()[0] + 1, GetPosition().GetVector()[1]);
+		direction = Vector2((GetPosition().GetVector()[0] + 1), (GetPosition().GetVector()[1]));
 		if (gameManager->TestPosition(direction)) {
-
+			gameManager->MoveEntity(this, 0, 1);
 			SetPosition(direction);
 		}
 
 	case 1:
-		direction = Vector2(GetPosition().GetVector()[0] - 1, GetPosition().GetVector()[1]);
+		direction = Vector2((GetPosition().GetVector()[0] - 1), (GetPosition().GetVector()[1]));
 		if (gameManager->TestPosition(direction))
+			gameManager->MoveEntity(this, 0, -1);
 			SetPosition(direction);
 
 
 		break;
 	case 2:
-		direction =Vector2(GetPosition().GetVector()[0], GetPosition().GetVector()[1] + 1);
+		direction =Vector2((GetPosition().GetVector()[0]), (GetPosition().GetVector()[1] + 1));
 		if (gameManager->TestPosition(direction))
+			gameManager->MoveEntity(this, 1, 1);
 			SetPosition(direction);
 
 		break;
 	case 3:
-		direction = Vector2(GetPosition().GetVector()[0], GetPosition().GetVector()[1] - 1);
+		direction = Vector2((GetPosition().GetVector()[0]), (GetPosition().GetVector()[1] - 1));
 		if (gameManager->TestPosition(direction))
+			gameManager->MoveEntity(this, 1, -1);
 			SetPosition(direction);
 		break;
 
@@ -68,25 +71,36 @@ void Mobs::Chase()
 
 
 	int bestdist = CalculDistance(betterpos);
-	if (int a = CalculDistance(up) < bestdist && gameManager->TestPosition(up)) {
-		bestdist = a;
-		betterpos = up;
+	if (CalculDistance(up) < bestdist && gameManager->TestPosition(up)) {
+		bestdist = CalculDistance(up);
+		betterpos = up;			
+		
 	}
-	if (int a = CalculDistance(down) < bestdist && gameManager->TestPosition(down)) {
+	if (CalculDistance(down) < bestdist && gameManager->TestPosition(down)) {
 
-		bestdist = a;
+		bestdist = CalculDistance(down);
 		betterpos = down;
 	}
-	if (int a = CalculDistance(left) < bestdist && gameManager->TestPosition(left)) {
+	if (CalculDistance(left) < bestdist && gameManager->TestPosition(left)) {
 
-		bestdist = a;
+		bestdist = CalculDistance(left);
 		betterpos = left;
 	}
-	if (int a = CalculDistance(right) < bestdist && gameManager->TestPosition(right)) {
+	if (CalculDistance(right) < bestdist && gameManager->TestPosition(right)) {
 
-		bestdist = a;
+		bestdist = CalculDistance(right);
 		betterpos = right;
 	}
+	if (betterpos.GetVector()[0] ==  up.GetVector()[0] && betterpos.GetVector()[1] == up.GetVector()[1] && gameManager->TestPosition(up))
+		gameManager->MoveEntity(this, 1, 1);
+	else if (betterpos.GetVector()[0] ==  down.GetVector()[0] && betterpos.GetVector()[1] == down.GetVector()[1] && gameManager->TestPosition(down))
+		gameManager->MoveEntity(this, 1, -1);
+	else if (betterpos.GetVector()[0] == left.GetVector()[0] && betterpos.GetVector()[1] == left.GetVector()[1] && gameManager->TestPosition(left))
+		gameManager->MoveEntity(this, 0, -1);
+	else if (betterpos.GetVector()[0] == right.GetVector()[0] && betterpos.GetVector()[1] == right.GetVector()[1] && gameManager->TestPosition(right))
+		gameManager->MoveEntity(this, 0, 1);
+	else
+		gameManager->MoveEntity(this, 0, 0);
 	SetPosition(betterpos);
 }
 

@@ -15,7 +15,7 @@ class GameManager
 
 public:
 	void CheckInputs();
-	void CheckDoor();
+	void CheckDoor(Vector2);
 	void ScanEntities();
 	void InitGame(std::string);
 	void MoveEntity(Entity*, int, int);

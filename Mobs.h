@@ -27,7 +27,7 @@ public:
 
 	void SetDetection(int range) { detection = range; };
 	bool ControlDistance();
-	bool ReadyToAttack() { return	(GetDistance() == 1) ? 1 : false; };
+	bool ReadyToAttack() { return	(GetDistance() == 1) ? true : false; };
 	int GetDistance();
 	int CalculDistance(Vector2 pos);
 	Player* GetPlayer() ;

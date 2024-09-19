@@ -2,7 +2,7 @@
 #include "Player.h"
 #include "Golem.h"
 #include <cassert>
-
+#include<iostream>
 GameManager::GameManager()
 {
 	assert(instance == nullptr);
@@ -17,20 +17,14 @@ void GameManager::CheckInputs()
 		Vector2 vector2 = m_player.GetPosition();
 		if (vector2.GetVector()[0] <= 0)
 			return;
-
-		MoveEntity(&m_player, 0, -1);
+		Vector2 test = Vector2((vector2.GetVector()[0]-1), (vector2.GetVector()[1] ));
+		if(TestPosition(test))
+			MoveEntity(&m_player, 0, -1);
+		else
+			return;
 		for (Mobs mob : m_entityVector) {
 			Vector2 posbase = mob.GetPosition();
 			mob.Play();
-			//le probleme vient de là, la position chnge mais pas la recup 
-			Vector2 afterbase = mob.GetPosition();
-			
-			int axe_x =posbase.GetVector()[0] - afterbase.GetVector()[0];
-			int axe_y =posbase.GetVector()[1] - afterbase.GetVector()[1];
-			if (axe_x != 0)
-				MoveEntity(&mob, 0, 1);
-			else if (axe_y != 0)
-				MoveEntity(&mob, 0, 1);
 		}
 		while (GetKeyState(VK_UP) & 0x8000);
 	}
@@ -40,7 +34,11 @@ void GameManager::CheckInputs()
 		if (vector2.GetVector()[0] >= ARRAY_SIZE - 1)
 			return;
 
-		MoveEntity(&m_player, 0, 1);
+		Vector2 test = Vector2((vector2.GetVector()[0]+1), (vector2.GetVector()[1]));
+		if (TestPosition(test))
+			MoveEntity(&m_player, 0, 1);
+		else
+			return;
 		for (Mobs mob : m_entityVector) {
 			mob.Play();
 		}
@@ -51,9 +49,13 @@ void GameManager::CheckInputs()
 		Vector2 vector2 = m_player.GetPosition();
 		if (vector2.GetVector()[1] <= 0)
 			return;
-
-		MoveEntity(&m_player, 1, -1);
+		Vector2 test = Vector2((vector2.GetVector()[0]), (vector2.GetVector()[1]-1));
+		if (TestPosition(test))
+			MoveEntity(&m_player, 1, -1);
+		else
+			return;
 		for (Mobs mob : m_entityVector) {
+			Vector2 posbase = mob.GetPosition();
 			mob.Play();
 		}
 		while (GetKeyState(VK_LEFT) & 0x8000);
@@ -63,9 +65,13 @@ void GameManager::CheckInputs()
 		Vector2 vector2 = m_player.GetPosition();
 		if (vector2.GetVector()[1] >= ARRAY_SIZE - 1)
 			return;
-
-		MoveEntity(&m_player, 1, 1);
+		Vector2 test = Vector2((vector2.GetVector()[0] ), (vector2.GetVector()[1] + 1));
+		if (TestPosition(test))
+			MoveEntity(&m_player, 1, 1);
+		else
+			return;
 		for (Mobs mob : m_entityVector) {
+			Vector2 posbase = mob.GetPosition();
 			mob.Play();
 		}
 
@@ -73,11 +79,10 @@ void GameManager::CheckInputs()
 	}
 }
 
-void GameManager::CheckDoor()
+void GameManager::CheckDoor(Vector2 nextPos)
 {
-	Vector2 vector2 = m_player.GetPosition();
-	std::string currentLine = m_map.GetCurrentChunk().getChunk(false)[vector2.GetVector()[0]];
-	if (currentLine[vector2.GetVector()[1]] == '^' && m_map.GetCurrentChunkId() < m_map.GetChunkVector().size())
+	std::string currentLine = m_map.GetCurrentChunk().getChunk(false)[nextPos.GetVector()[0]];
+	if (currentLine[nextPos.GetVector()[1]] == '^' && m_map.GetCurrentChunkId() < m_map.GetChunkVector().size())
 	{
 		//Check if all room mobs are dead
 		m_map.setCurrentChunkId(m_map.GetCurrentChunkId() + 1);
@@ -189,11 +194,19 @@ void GameManager::DeleteEntity(int id)
 
 bool GameManager::TestPosition(Vector2 pos)
 {
+
 	auto map = GetMap().GetCurrentChunk().getChunk(false);
-	if (map[pos.GetVector()[0]][pos.GetVector()[1]] != '.')
+	if (pos.GetVector()[0]<0 || pos.GetVector()[0] > map.size())
 		return false;
-	else
+	else if (pos.GetVector()[1]<0 || pos.GetVector()[1] > map.size())
+		return false;
+	else if (map[pos.GetVector()[0]][pos.GetVector()[1]] == '.')
 		return true;
+	else if (map[pos.GetVector()[0]][pos.GetVector()[1]] == '^')
+		return true;
+	else
+		return false;
+		
 }
 void GameManager::MoveEntity(Entity* entity, int axis, int speed)
 {
@@ -214,9 +227,9 @@ void GameManager::MoveEntity(Entity* entity, int axis, int speed)
 
 	entity->SetPosition(Position);
 	entity->SetLastTile(m_map.GetCurrentChunk().getChunk(false)[Position.GetVector()[0]][Position.GetVector()[1]]);
+	CheckDoor(Position);
 	m_map.SetCurrentChunkCoords(Position.GetVector()[0], Position.GetVector()[1], entity->getToken());
 	m_gameRenderer.RenderScreen(m_map);
-	CheckDoor();
 }
 
 GameManager* GameManager::get()
