@@ -37,26 +37,31 @@ void Map::ImportMap(std::string path)
 				tempChunk.SetChunkCoords(j, k, currentLine[k]);
 			}
 		}
-		m_ChunkVector.push_back(tempChunk);
+		m_chunkVector.push_back(tempChunk);
 	}
 }
 
 std::vector<Chunk> Map::GetChunkVector()
 {
-	return m_ChunkVector;
+	return m_chunkVector;
 }
 
 Chunk Map::GetCurrentChunk()
 {
-	return m_ChunkVector[GetCurrentChunkId()];
+	return m_chunkVector[GetCurrentChunkId()];
+}
+
+void Map::SetCurrentChunkCoords(int x, int y, std::string content)
+{
+	m_chunkVector[m_currentChunkId].SetChunkCoords(x, y, content);
 }
 
 int Map::GetCurrentChunkId()
 {
-	return m_currentChunk;
+	return m_currentChunkId;
 }
 
 void Map::setCurrentChunkId(int newId)
 {
-	m_currentChunk = newId;
+	m_currentChunkId = newId;
 }
