@@ -8,7 +8,7 @@
 
 void CombatState::Enter(StateManager* stateManager)
 {
-	if (stateManager->GetMobs()->getLife() == 0) {
+	if (stateManager->GetMobs()->getLife() <= 0) {
 		stateManager->ChangeState(dynamic_cast<State*>(stateManager->GetDeathState()));
 		stateManager->EnterState();
 	}

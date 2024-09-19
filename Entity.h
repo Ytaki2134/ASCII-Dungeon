@@ -28,4 +28,5 @@ public:
 	virtual void setFreeze(bool _freeze) { freeze = _freeze;};
 	virtual std::tuple<int,int> GetPosition() { return position; };
 	virtual void SetPosition(std::tuple<int, int> pos) { position = pos; };
+	virtual void TakeDamage(int damage) { life -= damage; };
 };

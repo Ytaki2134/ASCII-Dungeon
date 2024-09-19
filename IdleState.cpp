@@ -13,7 +13,7 @@ void IdleState::Enter(StateManager* stateManager)
 		stateManager->ChangeState(dynamic_cast<State*>(stateManager->GetNearPlayerState()));
 		stateManager->EnterState();
 	}
-	else if (stateManager->GetMobs()->getLife() == 0) {
+	else if (stateManager->GetMobs()->getLife() <= 0) {
 		stateManager->ChangeState(dynamic_cast<State*>(stateManager->GetDeathState()));
 		stateManager->EnterState();
 	}

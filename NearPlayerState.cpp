@@ -12,7 +12,7 @@ void NearPlayerState::Enter(StateManager* stateManager)
 		stateManager->ChangeState(dynamic_cast<State*>(stateManager->GetIdle()));
 		stateManager->EnterState();
 	}
-	if (stateManager->GetMobs()->getLife() == 0) {
+	if (stateManager->GetMobs()->getLife() <= 0) {
 		stateManager->ChangeState(dynamic_cast<State*>(stateManager->GetDeathState()));
 		stateManager->EnterState();
 	}

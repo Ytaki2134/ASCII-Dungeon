@@ -1,10 +1,9 @@
-#include "Golem.h"
+#include "Spectre.h"
 #include "GameManager.h"
 #include "Player.h"
-#include <random>
 
 
-void Golem::Move()
+void Spectre::Move()
 {
 	srand(time(NULL));
 	int direction = (rand() % 4) + 1;
@@ -30,51 +29,47 @@ void Golem::Move()
 	}
 }
 
-void Golem::Chase()
+void Spectre::Chase()
 {
 	std::tuple<int, int> actualpos = GetPosition();
 	std::tuple<int, int> betterpos = std::tuple<int, int>(std::get<0>(actualpos) + 1, std::get<1>(actualpos));
 	int bestdist = CalculDistance(betterpos);
-	if (int a = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos) - 1, std::get<1>(actualpos))) < bestdist) {
-
+	if (int a = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos) - 1, std::get<1>(actualpos))) > bestdist) {
+		std::cout << "1 dist" << a << std::endl;
 		bestdist = a;
 		betterpos = std::tuple<int, int>(std::get<0>(actualpos) - 1, std::get<1>(actualpos));
 	}
-	if (int a = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) + 1)) < bestdist) {
-
+	if (int a = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) + 1)) > bestdist) {
+		std::cout << "2 dist" << a << std::endl;
 		bestdist = a;
 		betterpos = std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) + 1);
 	}
-	if (int a = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) - 1)) < bestdist) {
-		
+	if (int a = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) - 1)) > bestdist) {
+		std::cout << "3 dist" << a << std::endl << "pleaye: " << std::get<0>(GetPlayer()->GetPosition()) << " , " << std::get<0>(GetPlayer()->GetPosition());
 		bestdist = a;
 		betterpos = std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) - 1);
 	}
-	
+	std::cout << "position:" << std::get<0>(betterpos) << " , " << std::get<1>(betterpos) << std::endl;
 	SetPosition(betterpos);
 }
 
-void Golem::Attack()
+void Spectre::Attack()
 {
 	GetPlayer()->Attacked(getDamage());
 }
-
-void Golem::Death()
+void Spectre::Death()
 {
 	gameManager->DeadEntity(GetID());
 }
 
-void Golem::ConfigureMonster(GameManager* gamemanager)
+void Spectre::ConfigureMonster(GameManager* gamemanager)
 {
 	setLife(100);
 	setDammage(10);
+	SetDetection(5);
 	gameManager = gamemanager;
 }
-
-void Golem::GetDamage(int damage) 
+void Spectre::GetDamage(int damage)
 {
-	srand(time(NULL));
-	int deniedattack = (rand() % 100) + 1;
-	if (deniedattack > 20)
 		TakeDamage(damage);
 }

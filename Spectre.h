@@ -1,20 +1,18 @@
 #pragma once
 #include "Mobs.h"
 class GameManager;
-class Golem : public Mobs
+class Spectre :public Mobs
 {
-private: 	
+private:
 	GameManager* gameManager;
 
-public :
+public:
 
 	void Move()		override;
 	void Chase()	override;
 	void Attack()	override;
 	void Death()	override;
 	void ConfigureMonster(GameManager* gamemanager);
-
 	void GetDamage(int damage);
-
 };
 

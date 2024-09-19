@@ -1,10 +1,9 @@
-#include "Golem.h"
+#include "Faucheur.h"
 #include "GameManager.h"
 #include "Player.h"
-#include <random>
 
 
-void Golem::Move()
+void Faucheur::Move()
 {
 	srand(time(NULL));
 	int direction = (rand() % 4) + 1;
@@ -30,7 +29,7 @@ void Golem::Move()
 	}
 }
 
-void Golem::Chase()
+void Faucheur::Chase()
 {
 	std::tuple<int, int> actualpos = GetPosition();
 	std::tuple<int, int> betterpos = std::tuple<int, int>(std::get<0>(actualpos) + 1, std::get<1>(actualpos));
@@ -46,35 +45,33 @@ void Golem::Chase()
 		betterpos = std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) + 1);
 	}
 	if (int a = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) - 1)) < bestdist) {
-		
+
 		bestdist = a;
 		betterpos = std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) - 1);
 	}
-	
+
 	SetPosition(betterpos);
 }
 
-void Golem::Attack()
+void Faucheur::Attack()
 {
 	GetPlayer()->Attacked(getDamage());
 }
 
-void Golem::Death()
+void Faucheur::Death()
 {
 	gameManager->DeadEntity(GetID());
 }
 
-void Golem::ConfigureMonster(GameManager* gamemanager)
+void Faucheur::ConfigureMonster(GameManager* gamemanager)
 {
-	setLife(100);
-	setDammage(10);
+	setLife(70);
+	setDammage(20);
+	SetDetection(15);
 	gameManager = gamemanager;
 }
 
-void Golem::GetDamage(int damage) 
+void Faucheur::GetDamage(int damage)
 {
-	srand(time(NULL));
-	int deniedattack = (rand() % 100) + 1;
-	if (deniedattack > 20)
-		TakeDamage(damage);
+	TakeDamage(damage);
 }
