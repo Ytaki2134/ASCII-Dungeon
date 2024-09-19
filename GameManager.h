@@ -6,24 +6,28 @@
 #include "map.h"
 #include "Entity.h"
 #include "Player.h"
+#include "GameRenderer.h"
 
 class GameManager
 {
+	enum class axis { x, y };
 
 public:
 	void CheckInputs();
 	void CheckDoor();
 	void ScanEntities();
 	void InitGame(std::string);
+	void DeleteEntity(int id);
+	void MoveEntity(Entity*, int, int);
+
 	Map GetMap();
 	Entity GetEntity(int Id);
-	void DeleteEntity(int id);
 
 	static GameManager* get();
 private:
 	GameManager();
 	void SetMap(Map);
-	class GameRenderer* m_gameRenderer;
+	GameRenderer m_gameRenderer;
 	Map m_map;
 	std::vector<Entity> m_entityVector;
 	Player m_player;

@@ -11,6 +11,7 @@ public:
 	std::vector<Chunk> GetChunkVector();
 	Chunk GetCurrentChunk();
 	void SetCurrentChunkCoords(int, int, std::string);
+	void SetCurrentChunkCoords(int, int, char);
 	int GetCurrentChunkId();
 	void setCurrentChunkId(int);
 

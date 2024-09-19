@@ -40,14 +40,14 @@ void GameRenderer::RenderTitle()
 	}
 }
 
-void GameRenderer::RenderChunk(std::vector<std::string> mapVector, std::vector<std::string> mobVector)
+void GameRenderer::RenderChunk(std::vector<std::string> mapVector)
 {
 	for (size_t i = 0; i < ARRAY_SIZE; i++)
 	{
 		std::string tempString = mapVector[i];
 		for (int j = 0; j < tempString.size(); j++)
 		{
-			
+			//map vector[i] == entityVector[j]
 		}
 		std::cout << Center(tempString) << std::endl;
 	}
