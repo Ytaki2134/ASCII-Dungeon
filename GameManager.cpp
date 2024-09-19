@@ -2,6 +2,13 @@
 #include "Player.h"
 #include "Golem.h"
 #include "GameRenderer.h"
+#include <cassert>
+
+GameManager::GameManager() 
+{
+	assert(instance == nullptr);
+	instance = this;
+}
 
 void GameManager::CheckInputs()
 {
@@ -124,6 +131,13 @@ Entity GameManager::GetEntity(int id)
 void GameManager::DeleteEntity(int id)
 {
 	m_entityVector.erase(m_entityVector.begin() + id);
+}
+
+GameManager* GameManager::get()
+{
+	if (!instance)
+		instance = new GameRenderer;
+	return instance;
 }
 
 void GameManager::SetMap(Map map)

@@ -17,11 +17,16 @@ public:
 	Map GetMap();
 	Entity GetEntity(int Id);
 	void DeleteEntity(int id);
+
+	static GameManager* get();
 private:
+	GameManager();
 	void SetMap(Map);
 	class GameRenderer* m_gameRenderer;
 	Map m_map;
 	std::vector<Entity> m_entityVector;
 	Player m_player;
+
+	static inline GameManager* instance = nullptr;
 };
 

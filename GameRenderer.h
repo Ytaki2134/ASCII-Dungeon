@@ -9,7 +9,6 @@
 class GameRenderer
 {
 public:
-	static GameRenderer* get();
 
 	GameRenderer();
 	std::string Center(const std::string&, int);
@@ -19,6 +18,5 @@ public:
     void RenderChunk(std::vector<std::string>) ;
 private:
 	std::vector<std::string> m_title;
-	static inline GameRenderer* instance = nullptr;
 };
 
