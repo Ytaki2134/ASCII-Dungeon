@@ -15,9 +15,9 @@ int Mobs::GetDistance()
 	return  (std::get<0>(GetPosition()) - std::get<0>(player->GetPosition())) + (std::get<1>(GetPosition()) - std::get<1>(player->GetPosition()));
 }
 
-int Mobs::CalculDistance(std::tuple<int, int> pos)
+int Mobs::CalculDistance(Vector2 pos)
 {
-	return  (std::get<0>(pos) - std::get<0>(player->GetPosition())) + (std::get<1>(pos) - std::get<1>(player->GetPosition()));
+	return  (pos.GetVector()[0] - player->GetPosition().GetVector()[0]) + (pos.GetVector()[1] - player->GetPosition().GetVector()[1]);
 }
 
 Player* Mobs::GetPlayer()
