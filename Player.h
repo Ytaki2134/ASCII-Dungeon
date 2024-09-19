@@ -7,7 +7,7 @@ private:
 
 public:
 	Player();
-	//char GetLastTile() override;
-	void Attacked(int damage) { setLife(getLife() - damage); };
+	std::string GetLastTile();
+	void Attacked(int damage) { SetLife(GetLife() - damage); };
 };
 
