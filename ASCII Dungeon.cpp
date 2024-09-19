@@ -9,6 +9,7 @@ int main()
 	GameManager* gameManager = GameManager::get();
 
 	gameManager->InitGame("Ressources/map-empty.txt");
+	gameManager->Try();
 	
 	while (GameRunning)
 	{

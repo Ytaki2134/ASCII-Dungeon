@@ -16,6 +16,13 @@ void Vector2::SetVector(int x, int y)
 	m_y = y;
 }
 
+void Vector2::SetVector(Vector2 newVector)
+{
+	m_x = newVector.GetVector()[0];
+	m_y = newVector.GetVector()[1];
+}
+
+
 std::vector<int> Vector2::GetVector()
 {
 	std::vector<int> vector;

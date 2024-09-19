@@ -7,7 +7,6 @@ private:
 	GameManager* gameManager;
 
 public:
-
 	void Move()		override;
 	void Chase()	override;
 	void Attack()	override;

@@ -9,6 +9,7 @@ public:
 	Vector2();
 	Vector2(int, int);
 	void SetVector(int, int);
+	void SetVector(Vector2);
 	std::vector<int> GetVector();
 };
 

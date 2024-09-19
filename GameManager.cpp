@@ -122,23 +122,23 @@ Map GameManager::GetMap()
 	return m_map;
 }
 
-//void GameManager::Try()
-//{
-//	Player a;
-//	Golem b;
-//	
-//	b.ConfigureMonster(this);
-//	b.Initialize();
-//	b.SetPlayer(&a);
-//	b.SetPosition(std::tuple<int, int>(5, 5));
-//	b.SetId(1);
-//	m_entityVector.push_back(a);
-//	m_entityVector.push_back(b);
-//
-//
-//	b.Play();
-//
-//}
+void GameManager::Try()
+{
+	Player a;
+	Golem b;
+	
+	b.ConfigureMonster(this);
+	b.Initialize();
+	b.SetPlayer(&a);
+	b.SetPosition(Vector2(5, 5));
+	b.SetId(1);
+	m_entityVector.push_back(a);
+	m_entityVector.push_back(b);
+
+
+	b.Play();
+
+}
 
 Entity GameManager::GetEntity(int id)
 {
@@ -150,10 +150,10 @@ void GameManager::DeleteEntity(int id)
 	m_entityVector.erase(m_entityVector.begin() + id);
 }
 
-bool GameManager::TestPosition(std::tuple<int, int> pos)
+bool GameManager::TestPosition(Vector2 pos)
 {
 	auto map = GetMap().GetCurrentChunk().getChunk(false);
-	if (map[std::get<1>(pos)][std::get<0>(pos)] == '.')
+	if (map[pos.GetVector()[0]][pos.GetVector()[1]] == '.')
 		return true;
 	else
 		return false;

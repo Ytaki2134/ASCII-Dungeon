@@ -8,8 +8,7 @@ private:
 
 public :
 
-	void Move()		override;
-	void Chase()	override;
+
 	void Attack()	override;
 	void Death()	override;
 	void ConfigureMonster(GameManager* gamemanager);

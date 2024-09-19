@@ -23,7 +23,7 @@ public:
 	void Try();
 	Entity GetEntity(int Id);
 	void DeleteEntity(int id);
-	bool TestPosition(std::tuple<int, int> pos);
+	bool TestPosition(Vector2 pos);
 
 
 	static GameManager* get();

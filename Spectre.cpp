@@ -5,13 +5,13 @@
 
 void Spectre::Move()
 {
-	std::tuple<int, int> actualpos = GetPosition();
-	std::tuple<int, int> betterpos = std::tuple<int, int>(std::get<0>(GetPlayer()->GetPosition()), std::get<1>(GetPlayer()->GetPosition()));
-
-	std::tuple<int, int> up = std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) + 1);
-	std::tuple<int, int> down = std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) - 1);
-	std::tuple<int, int> right = std::tuple<int, int>(std::get<0>(actualpos) + 1, std::get<1>(actualpos));
-	std::tuple<int, int> left = std::tuple<int, int>(std::get<0>(actualpos) - 1, std::get<1>(actualpos));
+	Vector2 actualpos = GetPosition();
+	Vector2 betterpos;
+	betterpos.SetVector(GetPlayer()->GetPosition());
+	Vector2 up = Vector2(actualpos.GetVector()[0], actualpos.GetVector()[1] + 1);
+	Vector2 down = Vector2(actualpos.GetVector()[0], actualpos.GetVector()[1] - 1);
+	Vector2 right = Vector2(actualpos.GetVector()[0] + 1, actualpos.GetVector()[1]);
+	Vector2 left = Vector2(actualpos.GetVector()[0] - 1, actualpos.GetVector()[1]);
 
 	int bestdist = CalculDistance(betterpos);
 	if (int a = CalculDistance(up) > bestdist && gameManager->TestPosition(up)) {
@@ -39,25 +39,36 @@ void Spectre::Move()
 
 void Spectre::Chase()
 {
-	std::tuple<int, int> actualpos = GetPosition();
-	std::tuple<int, int> betterpos = std::tuple<int, int>(std::get<0>(actualpos) + 1, std::get<1>(actualpos));
+
+	Vector2 actualpos = GetPosition();
+	Vector2 betterpos = Vector2(100, 100);
+
+	Vector2 up = Vector2(GetPosition().GetVector()[0], GetPosition().GetVector()[1] + 1);
+	Vector2 down = Vector2(GetPosition().GetVector()[0], GetPosition().GetVector()[1] - 1);
+	Vector2 right = Vector2(GetPosition().GetVector()[0] + 1, GetPosition().GetVector()[1]);
+	Vector2 left = Vector2(GetPosition().GetVector()[0] - 1, GetPosition().GetVector()[1]);
+
+
 	int bestdist = CalculDistance(betterpos);
-	if (int a = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos) - 1, std::get<1>(actualpos))) > bestdist && gameManager->TestPosition(a)) {
-		std::cout << "1 dist" << a << std::endl;
+	if (int a = CalculDistance(up) > bestdist && gameManager->TestPosition(up)) {
 		bestdist = a;
-		betterpos = std::tuple<int, int>(std::get<0>(actualpos) - 1, std::get<1>(actualpos));
+		betterpos = up;
 	}
-	if (int a = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) + 1)) > bestdist && gameManager->TestPosition(a)) {
-		std::cout << "2 dist" << a << std::endl;
+	if (int a = CalculDistance(down) > bestdist && gameManager->TestPosition(down)) {
+
 		bestdist = a;
-		betterpos = std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) + 1);
+		betterpos = down;
 	}
-	if (int a = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) - 1)) > bestdist && gameManager->TestPosition(a)) {
-		std::cout << "3 dist" << a << std::endl << "pleaye: " << std::get<0>(GetPlayer()->GetPosition()) << " , " << std::get<0>(GetPlayer()->GetPosition());
+	if (int a = CalculDistance(left) > bestdist && gameManager->TestPosition(left)) {
+
 		bestdist = a;
-		betterpos = std::tuple<int, int>(std::get<0>(actualpos), std::get<1>(actualpos) - 1);
+		betterpos = left;
 	}
-	std::cout << "position:" << std::get<0>(betterpos) << " , " << std::get<1>(betterpos) << std::endl;
+	if (int a = CalculDistance(right) > bestdist && gameManager->TestPosition(right)) {
+
+		bestdist = a;
+		betterpos = right;
+	}
 	SetPosition(betterpos);
 }
 

@@ -18,8 +18,8 @@ public:
 
 
 	void Initialize();
-	virtual void Move()  {};
-	virtual void Chase() {};
+	virtual void Move()  ;
+	virtual void Chase() ;
 	virtual void Attack(){};
 	virtual void Death() {};
 
