@@ -25,7 +25,7 @@ void NearPlayerState::Update(StateManager* stateManager)
 void NearPlayerState::Exit(StateManager* stateManager)
 {
 	if (stateManager-> GetMobs()->ReadyToAttack()) {
-		stateManager->ChangeState(dynamic_cast<State*>(stateManager->GetCombatState()));
+		//stateManager->ChangeState(dynamic_cast<State*>(stateManager->GetCombatState()));
 		stateManager->GetCurrentState()->Enter(stateManager);
 	}
 }

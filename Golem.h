@@ -3,11 +3,8 @@
 class GameManager;
 class Golem : public Mobs
 {
-private: 
-
-	
+private: 	
 	GameManager* gameManager;
-
 
 public :
 
@@ -15,7 +12,7 @@ public :
 	void Chase()	override;
 	void Attack()	override;
 	void Death()	override;
-
+	void ConfigureMonster(GameManager* gamemanager);
 
 };
 

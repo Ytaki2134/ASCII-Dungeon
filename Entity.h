@@ -9,7 +9,7 @@ protected:
 	int energy;
 	bool burn	= 0;
 	bool freeze = 0;
-	std::tuple<int,int> position;
+	std::tuple<int, int> position = std::tuple<int,int>(0, 0);
 
 public: 
 	int GetID() {return Id;};

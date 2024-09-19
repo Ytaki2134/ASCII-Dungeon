@@ -89,11 +89,18 @@ void GameManager::Try()
 {
 	Player a;
 	Golem b;
-
-	a.SetPosition(std::tuple<int, int>(8,4));
+	
+	a.SetPosition(std::tuple<int, int>(4,4));
+	b.ConfigureMonster(this);
+	b.Initialize();
 	b.SetPlayer(&a);
 	b.SetPosition(std::tuple<int, int>(8, 10));
-	b.Chase();
+	b.SetId(1);
+	m_entityVector.push_back(a);
+	m_entityVector.push_back(b);
+
+
+	b.Play();
 
 }
 

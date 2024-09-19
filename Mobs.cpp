@@ -2,6 +2,21 @@
 #include "Player.h"
 #include "StateManager.h"
 
+
+
+
+void Mobs::Initialize()
+{
+	stateManager = new StateManager();
+	stateManager->SetMonster(this);
+	stateManager->Initialize();
+}
+
+
+void Mobs::Play() {
+	stateManager->EnterState();
+}
+
 bool Mobs::ControlDistance()
 {
 	if (GetDistance() < detection)
@@ -12,7 +27,9 @@ bool Mobs::ControlDistance()
 
 int Mobs::GetDistance()
 {
-	return  (std::get<0>(GetPosition()) - std::get<0>(player->GetPosition())) + (std::get<1>(GetPosition()) - std::get<1>(player->GetPosition()));
+	int player_x = std::get<0>(player->GetPosition());
+	int player_y = std::get<1>(player->GetPosition());
+	return  std::get<0>(GetPosition()) - player_x + std::get<1>(GetPosition()) - player_y;
 }
 
 int Mobs::CalculDistance(std::tuple<int, int> pos)
@@ -25,7 +42,6 @@ int Mobs::CalculDistance(std::tuple<int, int> pos)
 	if (distance_y < 0)
 		distance_y *= -1;
 	int distance = distance_x+distance_y;
-	std::cout << "dist : " << distance << std::endl;
 	return distance;
 }
 

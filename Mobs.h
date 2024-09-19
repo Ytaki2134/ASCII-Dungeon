@@ -1,16 +1,17 @@
 ﻿#pragma once
 #include "Entity.h"
+#include "Player.h"
 class StateManager;
-class Player;
+
 
 class Mobs : public Entity{
 
 private:
 
-	Player* player;
+	Player* player = new Player();
 	int detection = 6;
 
-	StateManager* stateManager ;
+	StateManager* stateManager;
 	// RecompenseOnDeath deathmob;
 	// StateMachine ia;
 	// Skill uniqueskill;
@@ -22,10 +23,13 @@ public:
 	//virtual void SetUniqueSkill ( Skill skill) {uniqueskill = skill;}
 
 
+	void Initialize();
 	virtual void Move()  {};
 	virtual void Chase() {};
 	virtual void Attack(){};
 	virtual void Death() {};
+
+	void Play();
 
 	bool ControlDistance();
 	bool ReadyToAttack() { return	(GetDistance() == 1) ? 1 : false; };

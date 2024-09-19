@@ -52,7 +52,7 @@ void Golem::Chase()
 	}
 	
 	std::cout<<"position:" << std::get<0>(betterpos) << " , " << std::get<1>(betterpos) << std::endl;
-	gameManager->GetEntity(Id).SetPosition(betterpos);
+	//gameManager->GetEntity(Id).SetPosition(betterpos);
 }
 
 void Golem::Attack()
@@ -63,4 +63,11 @@ void Golem::Attack()
 void Golem::Death()
 {
 	gameManager->DeadEntity(GetID());
+}
+
+void Golem::ConfigureMonster(GameManager* gamemanager)
+{
+	setLife(100);
+	setDammage(10);
+	gameManager = gamemanager;
 }

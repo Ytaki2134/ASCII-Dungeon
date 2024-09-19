@@ -1,7 +1,14 @@
 #include "Mobs.h"
-#include "IdleState.h"
+
 #include "StateManager.h"
 
+
+
+void StateManager::Initialize()
+{
+    currentState = new IdleState();
+
+}
 
 State* StateManager::GetCurrentState() const
 {
