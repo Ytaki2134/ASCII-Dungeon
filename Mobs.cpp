@@ -6,36 +6,47 @@
 
 
 
-void Mobs::Initialize()
+void Mobs::Initialize(Mobs* mob)
 {
 	stateManager = new StateManager();
-	stateManager->SetMonster(this);
+	stateManager->SetMonster(mob);
 	stateManager->Initialize();
+
 }
 
 void Mobs::Move()
 {
 	srand(time(NULL));
-	int direction = (rand() % 4) + 1;
+	int directionInt = (rand() % 4) + 1;
 	GameManager* gameManager = GameManager::get();
+	Vector2 direction;
 
-	switch (direction)
+	switch (directionInt)
 	{
 	case 0:
-		if (gameManager->TestPosition(Vector2(GetPosition().GetVector()[0] + 1, GetPosition().GetVector()[1])))
-			SetPosition(GetPosition().GetVector()[0] + 1, GetPosition().GetVector()[1]);
+		direction = Vector2(GetPosition().GetVector()[0] + 1, GetPosition().GetVector()[1]);
+		if (gameManager->TestPosition(direction)) {
+
+			SetPosition(direction);
+		}
 
 	case 1:
-		if (gameManager->TestPosition(Vector2(GetPosition().GetVector()[0] - 1, GetPosition().GetVector()[1])))
-			SetPosition(GetPosition().GetVector()[0] - 1, GetPosition().GetVector()[1]);
+		direction = Vector2(GetPosition().GetVector()[0] - 1, GetPosition().GetVector()[1]);
+		if (gameManager->TestPosition(direction))
+			SetPosition(direction);
+
+
 		break;
 	case 2:
-		if (gameManager->TestPosition(Vector2(GetPosition().GetVector()[0], GetPosition().GetVector()[1] + 1)))
-			SetPosition(GetPosition().GetVector()[0], GetPosition().GetVector()[1] + 1);
+		direction =Vector2(GetPosition().GetVector()[0], GetPosition().GetVector()[1] + 1);
+		if (gameManager->TestPosition(direction))
+			SetPosition(direction);
+
 		break;
 	case 3:
-		if (gameManager->TestPosition(Vector2(GetPosition().GetVector()[0], GetPosition().GetVector()[1] - 1)))
-			SetPosition(GetPosition().GetVector()[0], GetPosition().GetVector()[1] - 1);
+		direction = Vector2(GetPosition().GetVector()[0], GetPosition().GetVector()[1] - 1);
+		if (gameManager->TestPosition(direction))
+			SetPosition(direction);
 		break;
 
 	default:
@@ -94,10 +105,10 @@ bool Mobs::ControlDistance()
 
 int Mobs::GetDistance()
 {
-	int player_x = GetPosition().GetVector()[0] - player->GetPosition().GetVector()[0];
+	int player_x = GetPosition().GetVector()[0] - GetPlayer()->GetPosition().GetVector()[0];
 	if (player_x < 0)
 		player_x *= -1;
-	int player_y = GetPosition().GetVector()[1] - player->GetPosition().GetVector()[1];
+	int player_y = GetPosition().GetVector()[1] - GetPlayer()->GetPosition().GetVector()[1];
 	if (player_y < 0)
 		player_y *= -1;
 	
@@ -124,5 +135,12 @@ Player* Mobs::GetPlayer()
 void Mobs::SetPlayer(Player* pl)
 {
 	player = pl;
+}
+
+void Mobs::ConfigureMonster(Player* pl)
+{
+	SetPlayer(pl);
+	setLife(100);
+	setDamage(10);
 }
 

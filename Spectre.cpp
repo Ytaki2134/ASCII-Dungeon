@@ -84,7 +84,7 @@ void Spectre::Death()
 void Spectre::ConfigureMonster(GameManager* gamemanager)
 {
 	setLife(100);
-	setDammage(10);
+	setDamage(10);
 	SetDetection(5);
 	gameManager = gamemanager;
 }

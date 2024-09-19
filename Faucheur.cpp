@@ -18,7 +18,7 @@ void Faucheur::Death()
 void Faucheur::ConfigureMonster(GameManager* gamemanager)
 {
 	setLife(70);
-	setDammage(20);
+	setDamage(20);
 	SetDetection(15);
 	gameManager = gamemanager;
 }

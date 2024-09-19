@@ -7,6 +7,12 @@
 
 
 
+Golem::Golem()
+{
+	SetToken('G');
+	SetLastTile('.');
+}
+
 void Golem::Attack()
 {
 	GetPlayer()->Attacked(getDamage());
@@ -14,14 +20,15 @@ void Golem::Attack()
 
 void Golem::Death()
 {
+	GameManager* gameManager = GameManager::get();
 	gameManager->DeleteEntity(GetID());
 }
 
-void Golem::ConfigureMonster(GameManager* gamemanager)
+void Golem::ConfigureMonster()
 {
 	setLife(100);
-	setDammage(10);
-	gameManager = gamemanager;
+	setDamage(10);
+
 }
 
 void Golem::GetDamage(int damage) 

@@ -23,7 +23,6 @@ public:
 	CombatState* GetCombatState()			const ;
 	DeathState* GetDeathState()				const ;
 
-
 	Mobs* GetMobs() ;
 	void EnterState() ;
 	void ChangeState(State* newstate) ;

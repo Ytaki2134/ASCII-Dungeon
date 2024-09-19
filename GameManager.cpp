@@ -11,6 +11,7 @@ GameManager::GameManager()
 
 void GameManager::CheckInputs()
 {
+
 	if (GetKeyState(VK_UP) & 0x8000)
 	{
 		Vector2 vector2 = m_player.GetPosition();
@@ -18,17 +19,31 @@ void GameManager::CheckInputs()
 			return;
 
 		MoveEntity(&m_player, 0, -1);
-
+		for (Mobs mob : m_entityVector) {
+			Vector2 posbase = mob.GetPosition();
+			mob.Play();
+			//le probleme vient de là, la position chnge mais pas la recup 
+			Vector2 afterbase = mob.GetPosition();
+			
+			int axe_x =posbase.GetVector()[0] - afterbase.GetVector()[0];
+			int axe_y =posbase.GetVector()[1] - afterbase.GetVector()[1];
+			if (axe_x != 0)
+				MoveEntity(&mob, 0, 1);
+			else if (axe_y != 0)
+				MoveEntity(&mob, 0, 1);
+		}
 		while (GetKeyState(VK_UP) & 0x8000);
 	}
 	if (GetKeyState(VK_DOWN) & 0x8000)
 	{
 		Vector2 vector2 = m_player.GetPosition();
-		if (vector2.GetVector()[0] >= ARRAY_SIZE-1)
+		if (vector2.GetVector()[0] >= ARRAY_SIZE - 1)
 			return;
 
 		MoveEntity(&m_player, 0, 1);
-
+		for (Mobs mob : m_entityVector) {
+			mob.Play();
+		}
 		while (GetKeyState(VK_DOWN) & 0x8000);
 	}
 	if (GetKeyState(VK_LEFT) & 0x8000)
@@ -38,16 +53,21 @@ void GameManager::CheckInputs()
 			return;
 
 		MoveEntity(&m_player, 1, -1);
-
+		for (Mobs mob : m_entityVector) {
+			mob.Play();
+		}
 		while (GetKeyState(VK_LEFT) & 0x8000);
 	}
 	if (GetKeyState(VK_RIGHT) & 0x8000)
 	{
 		Vector2 vector2 = m_player.GetPosition();
-		if (vector2.GetVector()[1] >= ARRAY_SIZE-1)
+		if (vector2.GetVector()[1] >= ARRAY_SIZE - 1)
 			return;
 
 		MoveEntity(&m_player, 1, 1);
+		for (Mobs mob : m_entityVector) {
+			mob.Play();
+		}
 
 		while (GetKeyState(VK_RIGHT) & 0x8000);
 	}
@@ -93,6 +113,16 @@ void GameManager::ScanEntities()
 				m_player = _player;
 				break;
 			}
+			//G - Gollem
+			case 71:
+			{
+				Golem _golem;
+				_golem.SetPosition(vector2);
+				m_entityVector.push_back(_golem);
+
+				break;
+			}
+
 			default:
 			{
 				break;
@@ -113,8 +143,16 @@ void GameManager::InitGame(std::string path)
 	SetMap(map);
 	ScanEntities();
 
+	for (int a = 0; a < m_entityVector.size(); a++)
+	{
+		//m_entityVector.at(a).SetPlayer(&m_player);
+		m_entityVector.at(a).ConfigureMonster(&m_player);
+		m_entityVector.at(a).Initialize(&m_entityVector.at(a));
+	}
+
 	//Render Visuals
 	m_gameRenderer.RenderScreen(m_map);
+
 }
 
 Map GameManager::GetMap()
@@ -124,23 +162,22 @@ Map GameManager::GetMap()
 
 void GameManager::Try()
 {
-	Player a;
-	Golem b;
-	
-	b.ConfigureMonster(this);
-	b.Initialize();
-	b.SetPlayer(&a);
-	b.SetPosition(Vector2(5, 5));
-	b.SetId(1);
-	m_entityVector.push_back(a);
-	m_entityVector.push_back(b);
+	//Player a;
+	//Golem b;
+
+	//b.ConfigureMonster();
+	//b.Initialize();
+	//b.SetPlayer(&a);
+	//b.SetPosition(Vector2(5, 5));
+	//b.SetId(1);
+	//m_entityVector.push_back(b);
 
 
-	b.Play();
+	//b.Play();
 
 }
 
-Entity GameManager::GetEntity(int id)
+Mobs GameManager::GetEntity(int id)
 {
 	return m_entityVector[id];
 }
@@ -153,10 +190,10 @@ void GameManager::DeleteEntity(int id)
 bool GameManager::TestPosition(Vector2 pos)
 {
 	auto map = GetMap().GetCurrentChunk().getChunk(false);
-	if (map[pos.GetVector()[0]][pos.GetVector()[1]] == '.')
-		return true;
-	else
+	if (map[pos.GetVector()[0]][pos.GetVector()[1]] != '.')
 		return false;
+	else
+		return true;
 }
 void GameManager::MoveEntity(Entity* entity, int axis, int speed)
 {

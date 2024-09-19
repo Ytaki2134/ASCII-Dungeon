@@ -7,7 +7,6 @@
 void StateManager::Initialize()
 {
     currentState = new IdleState();
-
 }
 
 State* StateManager::GetCurrentState() const

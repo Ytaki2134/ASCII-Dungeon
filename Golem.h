@@ -3,17 +3,14 @@
 class GameManager;
 class Golem : public Mobs
 {
-private: 	
-	GameManager* gameManager;
+private:
 
-public :
-
-
+public:
+	Golem();
 	void Attack()	override;
 	void Death()	override;
-	void ConfigureMonster(GameManager* gamemanager);
+	void ConfigureMonster();
 
 	void GetDamage(int damage);
-
 };
 

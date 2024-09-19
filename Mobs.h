@@ -8,8 +8,8 @@ class Mobs : public Entity{
 
 private:
 
-	Player* player = new Player();
 	int detection = 10;
+	Player* player;
 
 	StateManager* stateManager;
 
@@ -17,7 +17,7 @@ private:
 public:
 
 
-	void Initialize();
+	void Initialize(Mobs* mob);
 	virtual void Move()  ;
 	virtual void Chase() ;
 	virtual void Attack(){};
@@ -32,5 +32,7 @@ public:
 	int CalculDistance(Vector2 pos);
 	Player* GetPlayer() ;
 	void SetPlayer(Player* pl);
+
+	virtual void ConfigureMonster(Player* pl);
 
 };
