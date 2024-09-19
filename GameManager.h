@@ -15,6 +15,7 @@ public:
 	void ScanEntities();
 	void InitGame(std::string);
 	Map GetMap();
+	void Try();
 	Entity GetEntity(int Id);
 	void DeleteEntity(int id);
 

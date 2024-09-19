@@ -60,7 +60,7 @@ void Faucheur::Attack()
 
 void Faucheur::Death()
 {
-	gameManager->DeadEntity(GetID());
+	gameManager->DeleteEntity(GetID());
 }
 
 void Faucheur::ConfigureMonster(GameManager* gamemanager)

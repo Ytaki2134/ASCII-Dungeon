@@ -59,7 +59,7 @@ void Spectre::Attack()
 }
 void Spectre::Death()
 {
-	gameManager->DeadEntity(GetID());
+	gameManager->DeleteEntity(GetID());
 }
 
 void Spectre::ConfigureMonster(GameManager* gamemanager)
