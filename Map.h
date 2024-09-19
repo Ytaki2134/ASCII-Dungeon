@@ -10,11 +10,12 @@ public:
 
 	std::vector<Chunk> GetChunkVector();
 	Chunk GetCurrentChunk();
+	void SetCurrentChunkCoords(int, int, std::string);
 	int GetCurrentChunkId();
 	void setCurrentChunkId(int);
 
 private:
-	std::vector<Chunk> m_ChunkVector;
-	int m_currentChunk = 0;
+	std::vector<Chunk> m_chunkVector;
+	int m_currentChunkId = 0;
 };
 

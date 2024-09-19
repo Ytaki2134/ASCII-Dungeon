@@ -9,7 +9,8 @@ int main()
 	GameManager gameManager;
 
 	gameManager.InitGame("Ressources/map-empty.txt");
-
+	//gameManager.Try();
+	
 	while (GameRunning)
 	{
 		gameManager.CheckInputs();

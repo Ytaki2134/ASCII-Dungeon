@@ -18,6 +18,7 @@ private:
     void RenderChunk(std::vector<std::string>, std::vector<std::string>);
 	std::string Center(const std::string&, int);
 public:
+
 	GameRenderer();
 	void RenderScreen(Map, std::vector<Entity>);
 	//void ColorStringChar(int, std::ostream*);

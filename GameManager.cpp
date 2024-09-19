@@ -1,4 +1,14 @@
 #include "GameManager.h"
+#include "Player.h"
+#include "Golem.h"
+#include "GameRenderer.h"
+#include <cassert>
+
+GameManager::GameManager() 
+{
+	assert(instance == nullptr);
+	instance = this;
+}
 
 void GameManager::CheckInputs()
 {
@@ -123,6 +133,7 @@ void GameManager::InitGame(std::string path)
 	map.ImportMap(path);
 	//Save Map
 	SetMap(map);
+	ScanEntities();
 
 	//Render Visuals
 	m_gameRenderer.RenderScreen(m_map, m_entityVector);
@@ -131,6 +142,23 @@ void GameManager::InitGame(std::string path)
 Map GameManager::GetMap()
 {
 	return m_map;
+}
+
+Entity GameManager::GetEntity(int id)
+{
+	return m_entityVector[id];
+}
+
+void GameManager::DeleteEntity(int id)
+{
+	m_entityVector.erase(m_entityVector.begin() + id);
+}
+
+GameManager* GameManager::get()
+{
+	if (!instance)
+		instance = new GameRenderer;
+	return instance;
 }
 
 void GameManager::SetMap(Map map)
