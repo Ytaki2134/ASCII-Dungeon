@@ -18,13 +18,6 @@ void GameManager::CheckInputs()
 			return;
 
 		MoveEntity(&m_player, 0, -1);
-		/*m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), m_player.GetLastTile());
-		std::get<0>(tempTuple) -= 1;
-		m_player.SetPosition(tempTuple);
-		m_player.SetLastTile( m_map.GetCurrentChunk().getChunk(false)[std::get<0>(tempTuple)][std::get<1>(tempTuple)] );
-		m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), "@");
-		m_gameRenderer.RenderScreen(m_map);
-		CheckDoor();*/
 
 		while (GetKeyState(VK_UP) & 0x8000);
 	}
@@ -36,14 +29,6 @@ void GameManager::CheckInputs()
 
 		MoveEntity(&m_player, 0, 1);
 
-		/*m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), m_player.GetLastTile());
-		std::get<0>(tempTuple) += 1;
-		m_player.SetPosition(tempTuple);
-		m_player.SetLastTile(m_map.GetCurrentChunk().getChunk(false)[std::get<0>(tempTuple)][std::get<1>(tempTuple)]);
-		m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), "@");
-		m_gameRenderer.RenderScreen(m_map);
-		CheckDoor();*/
-
 		while (GetKeyState(VK_DOWN) & 0x8000);
 	}
 	if (GetKeyState(VK_LEFT) & 0x8000)
@@ -54,14 +39,6 @@ void GameManager::CheckInputs()
 
 		MoveEntity(&m_player, 1, -1);
 
-		/*m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), m_player.GetLastTile());
-		std::get<1>(tempTuple) -= 1;
-		m_player.SetPosition(tempTuple);
-		m_player.SetLastTile(m_map.GetCurrentChunk().getChunk(false)[std::get<0>(tempTuple)][std::get<1>(tempTuple)]);
-		m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), "@");
-		m_gameRenderer.RenderScreen(m_map);
-		CheckDoor();*/
-
 		while (GetKeyState(VK_LEFT) & 0x8000);
 	}
 	if (GetKeyState(VK_RIGHT) & 0x8000)
@@ -71,14 +48,6 @@ void GameManager::CheckInputs()
 			return;
 
 		MoveEntity(&m_player, 1, 1);
-
-		/*m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), m_player.GetLastTile());
-		std::get<1>(tempTuple) += 1;
-		m_player.SetPosition(tempTuple);
-		m_player.SetLastTile(m_map.GetCurrentChunk().getChunk(false)[std::get<0>(tempTuple)][std::get<1>(tempTuple)]);
-		m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), "@");
-		m_gameRenderer.RenderScreen(m_map);
-		CheckDoor();*/
 
 		while (GetKeyState(VK_RIGHT) & 0x8000);
 	}
@@ -185,14 +154,6 @@ void GameManager::MoveEntity(Entity* entity, int axis, int speed)
 	m_map.SetCurrentChunkCoords(Position.GetVector()[0], Position.GetVector()[1], entity->getToken());
 	m_gameRenderer.RenderScreen(m_map);
 	CheckDoor();
-
-	/*m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), m_player.GetLastTile());
-		std::get<0>(tempTuple) -= 1;
-		m_player.SetPosition(tempTuple);
-		m_player.SetLastTile( m_map.GetCurrentChunk().getChunk(false)[std::get<0>(tempTuple)][std::get<1>(tempTuple)] );
-		m_map.SetCurrentChunkCoords(std::get<0>(tempTuple), std::get<1>(tempTuple), "@");
-		m_gameRenderer.RenderScreen(m_map);
-		CheckDoor();*/
 }
 
 GameManager* GameManager::get()
