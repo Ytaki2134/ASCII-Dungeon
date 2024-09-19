@@ -8,15 +8,16 @@
 
 class GameRenderer
 {
+private:
+	std::vector<std::string> m_title;
+	void ImportTitle(std::string);
+	void RenderTitle();
+    void RenderChunk(std::vector<std::string>);
+	std::string Center(const std::string&, int);
 public:
 
 	GameRenderer();
-	std::string Center(const std::string&, int);
-	void ImportTitle(std::string);
 	void RenderScreen(Map);
-	void RenderTitle();
-    void RenderChunk(std::vector<std::string>) ;
-private:
-	std::vector<std::string> m_title;
+	//void ColorStringChar(int, std::ostream*);
 };
 

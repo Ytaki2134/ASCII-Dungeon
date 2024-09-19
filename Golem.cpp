@@ -13,16 +13,16 @@ void Golem::Move()
 	switch (direction)
 	{
 	case 0:
-		mob.SetPosition(std::tuple<int, int>(std::get<0>(GetPosition()) + 1, std::get<1>(GetPosition())));
+		mob.SetPosition(GetPosition().GetVector()[0] + 1, GetPosition().GetVector()[1]);
 		break;
 	case 1:
-		mob.SetPosition(std::tuple<int, int>(std::get<0>(GetPosition()) - 1, std::get<1>(GetPosition())));
+		mob.SetPosition(GetPosition().GetVector()[0] - 1, GetPosition().GetVector()[1]);
 		break;
 	case 2:
-		mob.SetPosition(std::tuple<int, int>(std::get<0>(GetPosition()), std::get<1>(GetPosition()) + 1));
+		mob.SetPosition(GetPosition().GetVector()[0], GetPosition().GetVector()[1] + 1);
 		break;
 	case 3:
-		mob.SetPosition(std::tuple<int, int>(std::get<0>(GetPosition()), std::get<1>(GetPosition()) - 1));
+		mob.SetPosition(GetPosition().GetVector()[0], GetPosition().GetVector()[1] - 1);
 		break;
 
 	default:
@@ -32,8 +32,10 @@ void Golem::Move()
 
 void Golem::Chase()
 {
-	std::tuple<int, int> actualpos = GetPosition();
-	std::tuple<int, int> betterpos = std::tuple<int, int>(std::get<0>(actualpos) + 1, std::get<1>(actualpos));
+	Vector2 actualpos = GetPosition();
+	Vector2 betterpos;
+	betterpos.SetVector(actualpos[0] + 1, actualpos[1]);
+
 	int bestdist = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos) + 1, std::get<1>(actualpos)));
 	if (int a = CalculDistance(std::tuple<int, int>(std::get<0>(actualpos) - 1, std::get<1>(actualpos))) < bestdist) {
 		bestdist = a;
