@@ -94,7 +94,7 @@ void GameManager::Try()
 	b.ConfigureMonster(this);
 	b.Initialize();
 	b.SetPlayer(&a);
-	b.SetPosition(std::tuple<int, int>(8, 10));
+	b.SetPosition(std::tuple<int, int>(5, 5));
 	b.SetId(1);
 	m_entityVector.push_back(a);
 	m_entityVector.push_back(b);

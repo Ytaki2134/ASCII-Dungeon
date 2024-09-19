@@ -27,9 +27,14 @@ bool Mobs::ControlDistance()
 
 int Mobs::GetDistance()
 {
-	int player_x = std::get<0>(player->GetPosition());
-	int player_y = std::get<1>(player->GetPosition());
-	return  std::get<0>(GetPosition()) - player_x + std::get<1>(GetPosition()) - player_y;
+	int player_x = std::get<0>(GetPosition()) - std::get<0>(player->GetPosition());
+	if (player_x < 0)
+		player_x *= -1;
+	int player_y = std::get<1>(GetPosition()) - std::get<1>(player->GetPosition());
+	if (player_y < 0)
+		player_y *= -1;
+	std::cout << player_x + player_y;
+	return   player_x + player_y;
 }
 
 int Mobs::CalculDistance(std::tuple<int, int> pos)
@@ -41,8 +46,7 @@ int Mobs::CalculDistance(std::tuple<int, int> pos)
 	int distance_y = std::get<1>(player->GetPosition()) - std::get<1>(pos);
 	if (distance_y < 0)
 		distance_y *= -1;
-	int distance = distance_x+distance_y;
-	return distance;
+	return  distance_x + distance_y;
 }
 
 Player* Mobs::GetPlayer()

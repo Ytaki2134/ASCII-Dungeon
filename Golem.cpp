@@ -52,7 +52,7 @@ void Golem::Chase()
 	}
 	
 	std::cout<<"position:" << std::get<0>(betterpos) << " , " << std::get<1>(betterpos) << std::endl;
-	//gameManager->GetEntity(Id).SetPosition(betterpos);
+	SetPosition(betterpos);
 }
 
 void Golem::Attack()

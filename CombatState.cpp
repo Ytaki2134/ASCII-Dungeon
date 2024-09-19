@@ -8,10 +8,14 @@
 
 void CombatState::Enter(StateManager* stateManager)
 {
-	if (stateManager->GetMobs()->getLife() == 0)
+	if (stateManager->GetMobs()->getLife() == 0) {
 		stateManager->ChangeState(dynamic_cast<State*>(stateManager->GetDeathState()));
-	if(stateManager->GetMobs()->GetDistance()>1)
+		stateManager->EnterState();
+	}
+	else if (stateManager->GetMobs()->GetDistance() > 1) {
 		stateManager->ChangeState(dynamic_cast<State*>(stateManager->GetNearPlayerState()));
+		stateManager->EnterState();
+	}
 	else
 		Update(stateManager);
 }
