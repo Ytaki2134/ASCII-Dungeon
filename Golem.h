@@ -7,10 +7,9 @@ private:
 
 public:
 	Golem();
-	void Attack()	override;
-	void Death()	override;
+	void Death() override;
 	void ConfigureMonster();
 
-	void GetDamage(int damage);
+	void GetDamagePlayer(int damage);
 };
 

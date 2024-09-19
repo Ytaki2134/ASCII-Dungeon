@@ -7,7 +7,7 @@
 
 void Faucheur::Attack()
 {
-	GetPlayer()->Attacked(getDamage());
+	GetPlayer()->Attacked(GetDamage());
 }
 
 void Faucheur::Death()
@@ -17,13 +17,13 @@ void Faucheur::Death()
 
 void Faucheur::ConfigureMonster(GameManager* gamemanager)
 {
-	setLife(70);
-	setDamage(20);
+	SetLife(70);
+	SetDamage(20);
 	SetDetection(15);
 	gameManager = gamemanager;
 }
 
-void Faucheur::GetDamage(int damage)
+void Faucheur::GetDamagePlayer(int damage)
 {
 	TakeDamage(damage);
 }

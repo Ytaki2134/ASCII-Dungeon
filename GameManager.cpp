@@ -1,8 +1,7 @@
 #include "GameManager.h"
-#include "Player.h"
-#include "Golem.h"
-#include <cassert>
-#include<iostream>
+#include <cassert>*
+
+
 GameManager::GameManager()
 {
 	assert(instance == nullptr);
@@ -151,7 +150,7 @@ void GameManager::InitGame(std::string path)
 
 	for (int a = 0; a < m_entityVector.size(); a++)
 	{
-		//m_entityVector.at(a).SetPlayer(&m_player);
+		m_entityVector.at(a).SetPlayer(&m_player);
 		m_entityVector.at(a).ConfigureMonster(&m_player);
 		m_entityVector.at(a).Initialize(&m_entityVector.at(a));
 	}

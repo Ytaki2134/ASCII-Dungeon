@@ -12,6 +12,6 @@ public:
 	void Attack()	override;
 	void Death()	override;
 	void ConfigureMonster(GameManager* gamemanager);
-	void GetDamage(int damage);
+	void GetDamagePlayer(int damage);
 };
 

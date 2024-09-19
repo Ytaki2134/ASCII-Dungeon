@@ -7,7 +7,6 @@ private:
 
 public:
 	Player();
-	std::string GetLastTile();
 	void Attacked(int damage) { SetLife(GetLife() - damage); };
 };
 

@@ -13,10 +13,6 @@ Golem::Golem()
 	SetLastTile('.');
 }
 
-void Golem::Attack()
-{
-	GetPlayer()->Attacked(GetDamage());
-}
 
 void Golem::Death()
 {
@@ -26,12 +22,12 @@ void Golem::Death()
 
 void Golem::ConfigureMonster()
 {
-	setLife(100);
-	setDamage(10);
+	SetLife(100);
+	SetDamage(10);
 
 }
 
-void Golem::GetDamage(int damage) 
+void Golem::GetDamagePlayer(int damage) 
 {
 	srand(time(NULL));
 	int deniedattack = (rand() % 100) + 1;

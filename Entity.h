@@ -1,5 +1,6 @@
 #pragma once
 #include "Vector2.h"
+#include <string>
 
 class Entity
 {
@@ -24,6 +25,7 @@ public:
 	virtual bool GetBurn() { return burn; };
 	virtual bool GetFreeze() { return freeze; };
 	virtual char GetToken() { return token; };
+	virtual std::string GetLastTile() { std::string tile; tile.push_back(lastTile); return tile; };
 
 	void SetId(int newId) { Id = newId; };
 	virtual void SetLife(int newlife) { life = newlife; };

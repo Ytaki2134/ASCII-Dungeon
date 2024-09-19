@@ -74,7 +74,7 @@ void Spectre::Chase()
 
 void Spectre::Attack()
 {
-	GetPlayer()->Attacked(getDamage());
+	GetPlayer()->Attacked(GetDamage());
 }
 void Spectre::Death()
 {
@@ -83,12 +83,12 @@ void Spectre::Death()
 
 void Spectre::ConfigureMonster(GameManager* gamemanager)
 {
-	setLife(100);
-	setDamage(10);
+	SetLife(100);
+	SetDamage(10);
 	SetDetection(5);
 	gameManager = gamemanager;
 }
-void Spectre::GetDamage(int damage)
+void Spectre::GetDamagePlayer(int damage)
 {
 		TakeDamage(damage);
 }

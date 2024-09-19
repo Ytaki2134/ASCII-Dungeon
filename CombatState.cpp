@@ -6,9 +6,12 @@
 #include"NearPlayerState.h"
 #include"DeathState.h"
 
+#include "Golem.h"
+#include "Faucheur.h"
+#include "Spectre.h"
 void CombatState::Enter(StateManager* stateManager)
 {
-	if (stateManager->GetMobs()->GetLife() <= 0)
+	if (stateManager->GetMobs()->GetLife() <= 0){
 		stateManager->ChangeState(dynamic_cast<State*>(stateManager->GetDeathState()));
 		stateManager->EnterState();
 	}
@@ -22,7 +25,23 @@ void CombatState::Enter(StateManager* stateManager)
 
 void CombatState::Update(StateManager* stateManager)
 {
-	stateManager->GetMobs()->Attack();
+	switch (stateManager->GetMobs()->GetToken())
+	{
+	case 'G':
+		Golem * mob = dynamic_cast<Golem*>(stateManager->GetMobs());
+		mob->Attack();
+		break;
+	case 'F':
+		Faucheur * mob = dynamic_cast<Faucheur*>(stateManager->GetMobs());
+		mob->Attack();
+		break;
+	case 'S':
+		Spectre * mob = dynamic_cast<Spectre*>(stateManager->GetMobs());
+		mob->Attack();
+		break;
+	default:
+		break;
+	}
 	Exit(stateManager);
 }
 

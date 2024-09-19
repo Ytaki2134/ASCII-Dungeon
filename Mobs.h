@@ -4,7 +4,7 @@
 class StateManager;
 
 
-class Mobs : public Entity{
+class Mobs : public Entity {
 
 private:
 
@@ -16,12 +16,11 @@ private:
 
 public:
 
-
 	void Initialize(Mobs* mob);
-	virtual void Move()  ;
-	virtual void Chase() ;
-	virtual void Attack(){};
-	virtual void Death() {};
+	virtual void Move();
+	virtual void Chase();
+	virtual void Attack();
+	virtual void Death();
 
 	void Play();
 
@@ -30,7 +29,7 @@ public:
 	bool ReadyToAttack() { return	(GetDistance() == 1) ? true : false; };
 	int GetDistance();
 	int CalculDistance(Vector2 pos);
-	Player* GetPlayer() ;
+	Player* GetPlayer();
 	void SetPlayer(Player* pl);
 
 	virtual void ConfigureMonster(Player* pl);

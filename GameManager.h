@@ -6,6 +6,7 @@
 #include "map.h"
 #include "Entity.h"
 #include "Mobs.h"
+#include "Golem.h"
 #include "Player.h"
 #include "GameRenderer.h"
 
@@ -27,15 +28,14 @@ public:
 	bool TestPosition(Vector2 pos);
 	Mobs GetLastMobSelected();
 	Player GetPlayer();
-
-	Player* GetPlayer() { return &m_player; };
+	//Player* GetPlayer() { return &m_player; };
 	static GameManager* get();
 private:
 	GameManager();
 	void SetMap(Map);
 	GameRenderer m_gameRenderer;
 	Map m_map;
-	std::vector<Entity> m_entityVector;
+	std::vector<Mobs> m_entityVector;
 	Mobs m_lastMobSelect;
 	Player m_player;
 

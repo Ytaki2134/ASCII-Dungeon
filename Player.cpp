@@ -8,3 +8,4 @@ Player::Player()
 	SetLife(maxLife);
 }
 
+

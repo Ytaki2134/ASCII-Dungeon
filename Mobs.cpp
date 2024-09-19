@@ -104,6 +104,15 @@ void Mobs::Chase()
 	SetPosition(betterpos);
 }
 
+ void Mobs::Attack()
+{
+	 GetPlayer()->Attacked(GetDamage());
+}
+
+void Mobs::Death()
+{
+}
+
 
 void Mobs::Play() {
 	stateManager->EnterState();
@@ -154,7 +163,7 @@ void Mobs::SetPlayer(Player* pl)
 void Mobs::ConfigureMonster(Player* pl)
 {
 	SetPlayer(pl);
-	setLife(100);
-	setDamage(10);
+	SetLife(100);
+	SetDamage(10);
 }
 
