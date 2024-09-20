@@ -30,7 +30,7 @@ public:
 	bool ControlDistance();
 	bool ReadyToAttack() { return	(GetDistance() == 1) ? 1 : false; };
 	int GetDistance();
-	int CalculDistance(Vector2 pos);
+	int ComputeDistance(Vector2 pos);
 	Player* GetPlayer() ;
 	void SetPlayer(Player* pl);
 

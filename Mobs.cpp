@@ -16,7 +16,7 @@ int Mobs::GetDistance()
 	return 5;
 }
 
-int Mobs::CalculDistance(Vector2 pos)
+int Mobs::ComputeDistance(Vector2 pos)
 {
 	return  (pos.GetVector()[0] - player->GetPosition().GetVector()[0]) + (pos.GetVector()[1] - player->GetPosition().GetVector()[1]);
 }
