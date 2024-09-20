@@ -6,6 +6,8 @@ Player::Player()
 	SetLastTile('.');
 	SetMaxLife(100);
 	SetLife(maxLife);
+	SetDamage(25);
+	SetName("Player");
 }
 
 

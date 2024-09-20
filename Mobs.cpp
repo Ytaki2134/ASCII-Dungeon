@@ -131,7 +131,7 @@ int Mobs::GetDistance()
 	return   player_x + player_y;
 }
 
-int Mobs::CalculDistance(Vector2 pos)
+int Mobs::ComputeDistance(Vector2 pos)
 {
 	int distance_x = player->GetPosition().GetVector()[0] - pos.GetVector()[0];
 	if (distance_x < 0)
