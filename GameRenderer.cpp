@@ -102,7 +102,7 @@ void GameRenderer::RenderSubScreen()
 				std::ostringstream oss;
 				if (playerStat)
 				{
-					oss << " " << gameManager->GetPlayer().GetLife() << " / " << gameManager->GetPlayer().GetMaxLife();
+					oss << " " << gameManager->GetPlayer().GetLife() << " / " << gameManager->GetPlayer().GetMaxLife() << "  ";
 					playerStat = false;
 				}
 				else
@@ -110,7 +110,7 @@ void GameRenderer::RenderSubScreen()
 					if (gameManager->GetLastMobSelected() == NULL)
 						oss << " ? / ?";
 					else
-						oss << " " << gameManager->GetLastMobSelected()->GetLife() << " / " << gameManager->GetLastMobSelected()->GetMaxLife();
+						oss << " " << gameManager->GetLastMobSelected()->GetLife() << " / " << gameManager->GetLastMobSelected()->GetMaxLife() << "  ";
 					playerStat = true;
 				}
 				std::string HP = oss.str();
