@@ -13,6 +13,7 @@ void Golem::Death()
 {
 	GameManager* gameManager = GameManager::get();
 	GetPlayer()->SetDamage(GetPlayer()->GetDamage() + 5);
+	gameManager->GetMap().SetCurrentChunkCoords(GetPosition().GetVector()[0], GetPosition().GetVector()[1],GetLastTile());
 	gameManager->DeleteEntity(GetID());
 }
 

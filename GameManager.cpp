@@ -20,8 +20,9 @@ void GameManager::CheckInputs()
 		Vector2 test = Vector2((vector2.GetVector()[0]-1), (vector2.GetVector()[1] ));
 		if(TestPosition(test))
 			MoveEntity(&m_player, 0, -1);
-		else
-			return;
+		else if (TestHit(test)) 
+			SetEntityDamagePos(test);
+
 		for (Mobs* mob : m_entityVector) {
 			mob->Play();
 		}
@@ -36,8 +37,9 @@ void GameManager::CheckInputs()
 		Vector2 test = Vector2((vector2.GetVector()[0]+1), (vector2.GetVector()[1]));
 		if (TestPosition(test))
 			MoveEntity(&m_player, 0, 1);
-		else
-			return;
+		if (TestHit(test)) {
+			SetEntityDamagePos(test);
+		}
 		for (Mobs* mob : m_entityVector) {
 			mob->Play();
 		}
@@ -51,8 +53,10 @@ void GameManager::CheckInputs()
 		Vector2 test = Vector2((vector2.GetVector()[0]), (vector2.GetVector()[1]-1));
 		if (TestPosition(test))
 			MoveEntity(&m_player, 1, -1);
-		else
-			return;
+		if (TestHit(test)) {
+			SetEntityDamagePos(test);
+		}
+
 		for (Mobs* mob : m_entityVector) {
 			mob->Play();
 		}
@@ -66,8 +70,10 @@ void GameManager::CheckInputs()
 		Vector2 test = Vector2((vector2.GetVector()[0] ), (vector2.GetVector()[1] + 1));
 		if (TestPosition(test))
 			MoveEntity(&m_player, 1, 1);
-		else
-			return;
+		if (TestHit(test)) {
+			SetEntityDamagePos(test);
+		}
+
 		for (Mobs* mob : m_entityVector) {
 			mob->Play();
 		}
@@ -208,6 +214,29 @@ Mobs* GameManager::GetLastMobSelected()
 Player GameManager::GetPlayer()
 {
 	return m_player;
+}
+
+void GameManager::SetEntityDamagePos(Vector2 pos)
+{
+	for (Mobs* mob : m_entityVector) {
+		if(mob->GetPosition().GetVector()[0] == pos.GetVector()[0] && mob->GetPosition().GetVector()[1] == pos.GetVector()[1])
+			mob->GetDamagePlayer(GetPlayer().GetDamage());
+	};
+}
+
+bool GameManager::TestHit(Vector2 pos)
+{
+	auto map = GetMap().GetCurrentChunk().getChunk(false);
+	if (pos.GetVector()[0] < 0 || pos.GetVector()[0] >= map.size())
+		return false;
+	else if (map[pos.GetVector()[0]][pos.GetVector()[1]] == 'G')
+		return true;
+	else if (map[pos.GetVector()[0]][pos.GetVector()[1]] == 'F')
+		return true;
+	else if (map[pos.GetVector()[0]][pos.GetVector()[1]] == 'S')
+		return true;
+	else
+		return false;
 }
 
 void GameManager::DeleteEntity(int id)

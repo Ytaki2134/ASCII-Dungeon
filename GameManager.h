@@ -35,6 +35,10 @@ public:
 	int GetLastMobSelectedLife();
 	int GetLastMobSelectedMaxLife();
 	Player GetPlayer();
+	void SetEntityDamagePos(Vector2);
+
+
+	bool TestHit(Vector2);
 	//Player* GetPlayer() { return &m_player; };
 	static GameManager* get();
 private:
