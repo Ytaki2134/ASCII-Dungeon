@@ -12,6 +12,7 @@ Golem::Golem()
 void Golem::Death()
 {
 	GameManager* gameManager = GameManager::get();
+	GetPlayer()->SetDamage(GetPlayer()->GetDamage() + 5);
 	gameManager->DeleteEntity(GetID());
 }
 
