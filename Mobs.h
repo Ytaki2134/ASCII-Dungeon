@@ -6,7 +6,7 @@ class StateManager;
 class GameManager;
 class Mobs : public Entity {
 
-private:
+protected:
 
 	int detection = 10;
 	Player* player;

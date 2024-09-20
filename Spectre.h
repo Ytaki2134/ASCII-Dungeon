@@ -4,9 +4,10 @@ class GameManager;
 class Spectre :public Mobs
 {
 private:
-	GameManager* gameManager;
+	
 
 public:
+	Spectre();
 	void Move()		override;
 	void Chase()	override;
 	void Attack()	override;

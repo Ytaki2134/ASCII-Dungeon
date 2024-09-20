@@ -3,42 +3,14 @@
 #include "Player.h"
 
 
-void Spectre::Move()
+Spectre::Spectre()
 {
-	Vector2 actualpos = GetPosition();
-	Vector2 betterpos;
-	betterpos.SetVector(GetPlayer()->GetPosition());
-	Vector2 up = Vector2(actualpos.GetVector()[0], actualpos.GetVector()[1] + 1);
-	Vector2 down = Vector2(actualpos.GetVector()[0], actualpos.GetVector()[1] - 1);
-	Vector2 right = Vector2(actualpos.GetVector()[0] + 1, actualpos.GetVector()[1]);
-	Vector2 left = Vector2(actualpos.GetVector()[0] - 1, actualpos.GetVector()[1]);
-
-	int bestdist = CalculDistance(betterpos);
-	if (int a = CalculDistance(up) > bestdist && gameManager->TestPosition(up)) {
-		bestdist = a;
-		betterpos = up;
-	}
-	if (int a = CalculDistance(down) > bestdist && gameManager->TestPosition(down)) {
-
-		bestdist = a;
-		betterpos = down;
-	}
-	if (int a = CalculDistance(left) > bestdist && gameManager->TestPosition(left)) {
-
-		bestdist = a;
-		betterpos = left;
-	}
-	if (int a = CalculDistance(right) > bestdist && gameManager->TestPosition(right)) {
-
-		bestdist = a;
-		betterpos = right;
-	}
-
-	SetPosition(betterpos);
+	SetToken('S');
+	SetLastTile('.');
 }
-
 void Spectre::Chase()
 {
+
 
 	Vector2 actualpos = GetPosition();
 	Vector2 betterpos = Vector2(100, 100);

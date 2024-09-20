@@ -5,6 +5,12 @@
 
 
 
+Faucheur::Faucheur()
+{
+	SetToken('F');
+	SetLastTile('.');
+}
+
 void Faucheur::Attack()
 {
 	GetPlayer()->Attacked(GetDamage());

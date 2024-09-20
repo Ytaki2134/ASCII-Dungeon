@@ -7,7 +7,7 @@ private:
 	GameManager* gameManager;
 
 public:
-
+	Faucheur();
 	void Attack()	override;
 	void Death()	override;
 	void ConfigureMonster(GameManager* gamemanager);
