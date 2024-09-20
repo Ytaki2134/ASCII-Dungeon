@@ -1,5 +1,10 @@
 #pragma once
 #include<iostream>
+#include "Golem.h"
+#include "Faucheur.h"
+#include "Spectre.h"
+
+
 class StateManager;
 
 

@@ -1,15 +1,16 @@
 #pragma once
+#include "State.h"
 #include "IdleState.h"
 #include "NearPlayerState.h"
 #include "CombatState.h"
 #include "Deathstate.h"
-class Mobs;
 
+class Mobs;
 class StateManager
 {
 private:
-	Mobs* monster;
-	State* currentState = new IdleState();
+	Mobs* monster ;
+	State* currentState = new State();
 	IdleState* Idle = new IdleState();
 	NearPlayerState* NearPlayer = new NearPlayerState();
 	CombatState* Combat = new CombatState();
@@ -17,7 +18,7 @@ private:
 public:
 
 	void Initialize();
-	State* GetCurrentState()				const ;
+	State* GetCurrentState()				 ;
 	IdleState* GetIdle()					const ;
 	NearPlayerState* GetNearPlayerState()	const ;
 	CombatState* GetCombatState()			const ;
@@ -25,7 +26,7 @@ public:
 
 	Mobs* GetMobs() ;
 	void EnterState() ;
-	void ChangeState(State* newstate) ;
+	void ChangeState(State* newstate)  ;
 
 
 	void SetMonster(Mobs* _monster) ;

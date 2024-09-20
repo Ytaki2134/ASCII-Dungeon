@@ -1,6 +1,7 @@
 #pragma once
 
 #include"State.h"
+class StateManager;
 class IdleState :public State 
 {
 public:

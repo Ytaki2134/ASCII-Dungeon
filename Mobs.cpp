@@ -1,16 +1,12 @@
 ﻿#include "Mobs.h"
-#include "Player.h"
-#include "StateManager.h"
 #include "GameManager.h"
-
-
-
-
+#include "StateManager.h"
 void Mobs::Initialize(Mobs* mob)
 {
+	gameManager = GameManager::get();
 	stateManager = new StateManager();
 	stateManager->SetMonster(mob);
-	stateManager->Initialize();
+ 	stateManager->Initialize();
 
 }
 
@@ -18,9 +14,7 @@ void Mobs::Move()
 {
 	srand(time(NULL));
 	int directionInt = (rand() % 4) + 1;
-	GameManager* gameManager = GameManager::get();
 	Vector2 direction;
-
 	switch (directionInt)
 	{
 	case 0:
@@ -28,6 +22,7 @@ void Mobs::Move()
 		if (gameManager->TestPosition(direction)) {
 			gameManager->MoveEntity(this, 0, 1);
 			SetPosition(direction);
+			break;
 		}
 
 	case 1:
@@ -59,8 +54,6 @@ void Mobs::Move()
 
 void Mobs::Chase()
 {
-
-	GameManager* gameManager = GameManager::get();
 	Vector2 actualpos = GetPosition();
 	Vector2 betterpos = Vector2(100, 100);
 
@@ -162,8 +155,10 @@ void Mobs::SetPlayer(Player* pl)
 
 void Mobs::ConfigureMonster(Player* pl)
 {
+
 	SetPlayer(pl);
 	SetLife(100);
 	SetDamage(10);
+
 }
 

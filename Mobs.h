@@ -1,9 +1,9 @@
 ﻿#pragma once
 #include "Entity.h"
 #include "Player.h"
+
 class StateManager;
-
-
+class GameManager;
 class Mobs : public Entity {
 
 private:
@@ -12,15 +12,18 @@ private:
 	Player* player;
 
 	StateManager* stateManager;
-
+	GameManager* gameManager;
 
 public:
-
 	void Initialize(Mobs* mob);
 	virtual void Move();
 	virtual void Chase();
 	virtual void Attack();
 	virtual void Death();
+
+	virtual void ConfigureMonster() {};
+
+	virtual void GetDamagePlayer(int damage) {};
 
 	void Play();
 

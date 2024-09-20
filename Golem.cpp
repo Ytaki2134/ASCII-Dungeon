@@ -1,11 +1,6 @@
 #include "Golem.h"
-#include "GameManager.h"
-#include "Player.h"
 #include <random>
-
-
-
-
+#include "GameManager.h"
 
 Golem::Golem()
 {

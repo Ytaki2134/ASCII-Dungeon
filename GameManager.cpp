@@ -1,5 +1,6 @@
 #include "GameManager.h"
-#include <cassert>*
+#include <cassert>
+
 
 
 GameManager::GameManager()
@@ -21,9 +22,8 @@ void GameManager::CheckInputs()
 			MoveEntity(&m_player, 0, -1);
 		else
 			return;
-		for (Mobs mob : m_entityVector) {
-			Vector2 posbase = mob.GetPosition();
-			mob.Play();
+		for (Mobs* mob : m_entityVector) {
+			mob->Play();
 		}
 		while (GetKeyState(VK_UP) & 0x8000);
 	}
@@ -38,8 +38,8 @@ void GameManager::CheckInputs()
 			MoveEntity(&m_player, 0, 1);
 		else
 			return;
-		for (Mobs mob : m_entityVector) {
-			mob.Play();
+		for (Mobs* mob : m_entityVector) {
+			mob->Play();
 		}
 		while (GetKeyState(VK_DOWN) & 0x8000);
 	}
@@ -53,9 +53,8 @@ void GameManager::CheckInputs()
 			MoveEntity(&m_player, 1, -1);
 		else
 			return;
-		for (Mobs mob : m_entityVector) {
-			Vector2 posbase = mob.GetPosition();
-			mob.Play();
+		for (Mobs* mob : m_entityVector) {
+			mob->Play();
 		}
 		while (GetKeyState(VK_LEFT) & 0x8000);
 	}
@@ -69,9 +68,8 @@ void GameManager::CheckInputs()
 			MoveEntity(&m_player, 1, 1);
 		else
 			return;
-		for (Mobs mob : m_entityVector) {
-			Vector2 posbase = mob.GetPosition();
-			mob.Play();
+		for (Mobs* mob : m_entityVector) {
+			mob->Play();
 		}
 
 		while (GetKeyState(VK_RIGHT) & 0x8000);
@@ -121,8 +119,8 @@ void GameManager::ScanEntities()
 			//G - Gollem
 			case 71:
 			{
-				Golem _golem;
-				_golem.SetPosition(vector2);
+				Golem* _golem = new Golem();
+				_golem->SetPosition(vector2);
 				m_entityVector.push_back(_golem);
 
 				break;
@@ -150,9 +148,9 @@ void GameManager::InitGame(std::string path)
 
 	for (int a = 0; a < m_entityVector.size(); a++)
 	{
-		m_entityVector.at(a).SetPlayer(&m_player);
-		m_entityVector.at(a).ConfigureMonster(&m_player);
-		m_entityVector.at(a).Initialize(&m_entityVector.at(a));
+		m_entityVector.at(a)->SetPlayer(&m_player);
+		m_entityVector.at(a)->ConfigureMonster(&m_player);
+		m_entityVector.at(a)->Initialize(m_entityVector.at(a));
 	}
 
 	//Render Visuals
@@ -182,14 +180,29 @@ void GameManager::Try()
 
 }
 
-Mobs GameManager::GetEntity(int id)
+Mobs* GameManager::GetEntity(int id)
 {
 	return m_entityVector[id];
 }
-
-Mobs GameManager::GetLastMobSelected()
+int GameManager::GetLastMobSelectedLife() {
+	if (m_lastMobSelect)
+		return m_lastMobSelect->GetLife();
+	else;
+	return 0;
+}
+int GameManager::GetLastMobSelectedMaxLife()
 {
-	return m_lastMobSelect;
+	if (m_lastMobSelect)
+		return m_lastMobSelect->GetMaxLife();
+	else;
+	return 0;
+}
+Mobs* GameManager::GetLastMobSelected()
+{
+	if (m_lastMobSelect)
+		return m_lastMobSelect;
+	else;
+	return NULL;
 }
 
 Player GameManager::GetPlayer()
@@ -206,9 +219,9 @@ bool GameManager::TestPosition(Vector2 pos)
 {
 
 	auto map = GetMap().GetCurrentChunk().getChunk(false);
-	if (pos.GetVector()[0]<0 || pos.GetVector()[0] > map.size())
+	if (pos.GetVector()[0] < 0 || pos.GetVector()[0] >= map.size())
 		return false;
-	else if (pos.GetVector()[1]<0 || pos.GetVector()[1] > map.size())
+	if (pos.GetVector()[1] < 0 || pos.GetVector()[1] >= map[0].size()) 
 		return false;
 	else if (map[pos.GetVector()[0]][pos.GetVector()[1]] == '.')
 		return true;

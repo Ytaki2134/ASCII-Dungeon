@@ -1,6 +1,6 @@
 #pragma once
 #include "State.h"
-
+class StateManager;
 class NearPlayerState : public State
 {
 public:

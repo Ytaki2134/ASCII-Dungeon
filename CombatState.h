@@ -1,5 +1,6 @@
 #pragma once
 #include "State.h"
+class StateManager;
 class CombatState : public State
 {
 public:

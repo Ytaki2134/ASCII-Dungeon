@@ -2,6 +2,7 @@
 #include "GameManager.h"
 
 
+
 GameRenderer::GameRenderer()
 {
 	ImportTitle("Ressources/Title.txt");
@@ -84,7 +85,7 @@ void GameRenderer::RenderSubScreen()
 				}
 				else
 				{
-					oss << " " << gameManager->GetLastMobSelected().GetLife() << " / " << gameManager->GetLastMobSelected().GetMaxLife();
+					oss << " " << gameManager->GetLastMobSelected() << " / " << gameManager->GetLastMobSelectedMaxLife();
 					playerStat = true;
 				}
 				std::string HP = oss.str();

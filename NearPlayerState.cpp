@@ -1,13 +1,9 @@
 #include "NearPlayerState.h"
 #include "StateManager.h"
-#include "Mobs.h"
 
 #include "IdleState.h"
 #include "DeathState.h"
 
-#include "Golem.h"
-#include "Faucheur.h"
-#include "Spectre.h"
 
 void NearPlayerState::Enter(StateManager* stateManager)
 {
@@ -33,23 +29,43 @@ void NearPlayerState::Enter(StateManager* stateManager)
 
 void NearPlayerState::Update(StateManager* stateManager)
 {
-	switch (stateManager->GetMobs()->GetToken())
-	{
-	case 'G':
-		Golem * mob = dynamic_cast<Golem*>(stateManager->GetMobs());
-		mob->Chase();
-		break;
-	case 'F':
-		Faucheur * mob = dynamic_cast<Faucheur*>(stateManager->GetMobs());
-		mob->Chase();
-		break;
-	case 'S':
-		Spectre * mob = dynamic_cast<Spectre*>(stateManager->GetMobs());
-		mob->Chase();
-		break;
-	default:
-		break;
-	}
+    switch (stateManager->GetMobs()->GetToken())
+    {
+    case 'G': {
+        Golem* golem = dynamic_cast<Golem*>(stateManager->GetMobs());
+        if (golem) {
+            golem->Chase();  // Appelle Chase() seulement si le cast a réussi
+        }
+        else {
+            std::cerr << "Error: Failed to cast to Golem." << std::endl;
+        }
+        break;
+    }
+    case 'F': {
+        Faucheur* faucheur = dynamic_cast<Faucheur*>(stateManager->GetMobs());
+        if (faucheur) {
+            faucheur->Chase();
+        }
+        else {
+            std::cerr << "Error: Failed to cast to Faucheur." << std::endl;
+        }
+        break;
+    }
+    case 'S': {
+        Spectre* spectre = dynamic_cast<Spectre*>(stateManager->GetMobs());
+        if (spectre) {
+            spectre->Chase();
+        }
+        else {
+            std::cerr << "Error: Failed to cast to Spectre." << std::endl;
+        }
+        break;
+    }
+    default: {
+        std::cerr << "Error: Unknown token." << std::endl;
+        break;
+    }
+    }
 	Exit(stateManager);
 }
 

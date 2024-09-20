@@ -27,23 +27,11 @@
     <ClCompile Include="ASCII Dungeon.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="IdleState.cpp">
-      <Filter>Fichiers sources\AllState</Filter>
-    </ClCompile>
-    <ClCompile Include="NearPlayerState.cpp">
-      <Filter>Fichiers sources\AllState</Filter>
-    </ClCompile>
-    <ClCompile Include="CombatState.cpp">
-      <Filter>Fichiers sources\AllState</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Mobs.cpp">
       <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="DeathState.cpp">
-      <Filter>Fichiers sources\AllState</Filter>
     </ClCompile>
     <ClCompile Include="Golem.cpp">
       <Filter>Fichiers sources</Filter>
@@ -65,6 +53,27 @@
     </ClCompile>
     <ClCompile Include="GameRenderer.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Faucheur.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Spectre.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="IdleState.cpp">
+      <Filter>Fichiers sources\AllState</Filter>
+    </ClCompile>
+    <ClCompile Include="NearPlayerState.cpp">
+      <Filter>Fichiers sources\AllState</Filter>
+    </ClCompile>
+    <ClCompile Include="CombatState.cpp">
+      <Filter>Fichiers sources\AllState</Filter>
+    </ClCompile>
+    <ClCompile Include="DeathState.cpp">
+      <Filter>Fichiers sources\AllState</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +134,15 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="ConsoleColor.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Faucheur.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Spectre.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
