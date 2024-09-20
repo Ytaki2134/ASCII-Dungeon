@@ -1,4 +1,5 @@
 ﻿#include "Mobs.h"
+#include "Player.h"
 #include "GameManager.h"
 #include "StateManager.h"
 void Mobs::Initialize(Mobs* mob)
@@ -131,17 +132,19 @@ int Mobs::GetDistance()
 	return   player_x + player_y;
 }
 
-int Mobs::ComputeDistance(Vector2 pos)
+int Mobs::CalculDistance(Vector2 pos)
 {
 	int distance_x = player->GetPosition().GetVector()[0] - pos.GetVector()[0];
 	if (distance_x < 0)
 		distance_x *= -1;
-	
+
 	int distance_y = player->GetPosition().GetVector()[1] - pos.GetVector()[1];
 	if (distance_y < 0)
 		distance_y *= -1;
 	return  distance_x + distance_y;
 }
+
+
 
 Player* Mobs::GetPlayer()
 {
